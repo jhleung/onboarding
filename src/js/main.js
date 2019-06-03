@@ -8,11 +8,11 @@ const server = http.createServer((req, res) => {
 
 function sendHtmlContent(response, fileName) {
  	var fs = require('fs');
-	fs.readFile(fileName, function(err, html) {
+	fs.readFile(fileName, (err, html) => {
 		if(err){
 			response.writeHead(404);
 			response.write("Not Found!");
-		}	else{
+		} else {
 			response.writeHead(200, {'Content-Type': 'text/html'});
 			response.write(html);
 		}
