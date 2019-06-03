@@ -3,19 +3,15 @@ const filePath = path.join(__dirname, '../index.html');
 const http = require('http');
 
 const server = http.createServer((req, res) => {
-	sendHtmlContent(res, filePath);
-}).listen(9000);
-
-function sendHtmlContent(response, fileName) {
- 	var fs = require('fs');
-	fs.readFile(fileName, (err, html) => {
+	const fs = require('fs');
+	fs.readFile(filePath, (err, html) => {
 		if(err){
-			response.writeHead(404);
-			response.write("Not Found!");
+			res.writeHead(404);
+			res.write("Not Found!");
 		} else {
-			response.writeHead(200, {'Content-Type': 'text/html'});
-			response.write(html);
+			res.writeHead(200, {'Content-Type': 'text/html'});
+			res.write(html);
 		}
-		response.end();
-	});
-}
+		res.end();
+	})
+}).listen(9000);
