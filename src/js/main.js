@@ -4,9 +4,7 @@ const http = require('http');
 
 const server = http.createServer((req, res) => {
 	sendHtmlContent(res, filePath);
-}).listen(9000).on('clientError', (err, socket) => {
-	socket.end('HTTP/1.1 400 Bad Request\n');
-})
+}).listen(9000);
 
 function sendHtmlContent(response, fileName) {
  	var fs = require('fs');
