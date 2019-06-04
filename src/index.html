@@ -13,6 +13,9 @@
 			xhttp.onload = function() {
 				if (this.status == 200) {
 					document.getElementById("timeline").innerHTML = this.responseText;
+				} else if (this.status == 500) {
+					alert("Pull timeline failed.");
+					console.log(this.responseText);
 				}
 			};
 			xhttp.open("GET", "http://localhost:8080/api/1.0/twitter/timeline", true);
