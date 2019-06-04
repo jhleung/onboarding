@@ -10,8 +10,8 @@
 	<script>
 		const pullTimeline = () => {
 			const xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
+			xhttp.onload = function() {
+				if (this.status == 200) {
 					document.getElementById("timeline").innerHTML = this.responseText;
 				}
 			};
