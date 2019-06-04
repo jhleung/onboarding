@@ -1,11 +1,11 @@
 const path = require('path');
 const filePath = path.join(__dirname, '../index.html');
 const http = require('http');
+const fs = require('fs');
 
 const server = http.createServer((req, res) => {
-	const fs = require('fs');
 	fs.readFile(filePath, (err, html) => {
-		if(err){
+		if(err) {
 			res.writeHead(404);
 			res.write("Not Found!");
 		} else {
