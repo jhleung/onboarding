@@ -9,19 +9,20 @@
 
 	<script>
 		const endpoint = "http://localhost:8080/api/1.0/twitter/timeline"
+		const timelineDiv = document.getElementById("timeline");
 		const pullTimeline = () => {
 			const xhttp = new XMLHttpRequest();
 			xhttp.onload = () => {
 				if (xhttp.status == 200) {
-					document.getElementById("timeline").innerHTML = xhttp.responseText;
+					timelineDiv.innerHTML = xhttp.responseText;
 				} else if (xhttp.status == 500) {
-					alert("Pull timeline failed.")
+					timelineDiv.innerHTML = "Pull timeline failed.";
 					console.log(xhttp.responseText);
 				}
 			};
 			xhttp.onerror = () => {
-				alert("An error has occurred. Please contact system administrator.");
-			  	console.log("An error has occurred during attempt to make a request to {}", endpoint);
+				timelineDiv.innerHTML = "An error has occurred. Please contact system administrator.";
+			  	console.log("An error has occurred during attempt to make a request to ", endpoint);
 			};
 			xhttp.open("GET", endpoint, true);
 			xhttp.send(); 
