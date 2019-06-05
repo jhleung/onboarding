@@ -24,5 +24,3 @@ const server = http.createServer((req, res) => {
 		readFile(path.join(__dirname, '/pullTimeline.js'), res);
 	}
 }).listen(9000);
-
-

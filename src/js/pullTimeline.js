@@ -1,11 +1,36 @@
+const formatTimeline = (timeline) => {
+	tweets = JSON.parse(timeline).forEach((tweet, i) => {
+		const timeline = document.createElement("div");
+
+		if (i % 2 == 0) 
+			timeline.style.backgroundColor="lightsteelblue";
+
+		const profileImg = document.createElement("img");
+		profileImg.src = tweet.profileImageUrl;
+		timeline.appendChild(profileImg);
+
+		const timestampSpan = document.createElement("span");
+		const timestamp = new Date(tweet.createdAt);
+		timestampSpan.innerText = timestamp.getFullYear() + "-" + timestamp.getMonth() + "-" + timestamp.getDay() + " " + timestamp.getHours() + ":" + timestamp.getMinutes() + ":" + timestamp.getSeconds();
+		timeline.appendChild(timestampSpan);
+
+		const message = document.createElement("a");
+		message.target = "_blank";
+		message.rel = "noopener noreferrer";
+		message.href = "https://twitter.com/" + tweet.handle + "/status/" + tweet.id;
+		message.innerHTML = tweet.message;
+		timeline.appendChild(message);
+
+		document.getElementById("timeline").appendChild(timeline);
+	})
+}
+
 const pullTimeline = () => { 
-	const timelineDiv = document.getElementById("timeline");
 	const endpoint = "http://localhost:8080/api/1.0/twitter/timeline"
 	const xhttp = new XMLHttpRequest();
 	xhttp.onload = () => {
 		if (xhttp.status == 200) {
-			console.log(xhttp.responseText);
-			timelineDiv.innerHTML = xhttp.responseText;
+			formatTimeline(xhttp.responseText);
 		} else if (xhttp.status == 500) {
 			console.log(xhttp.responseText);
 			timelineDiv.innerHTML.innerHTML = "Pull timeline failed.";
