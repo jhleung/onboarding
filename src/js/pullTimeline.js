@@ -20,4 +20,7 @@ const pullTimeline = () => {
 	xhttp.send(); 
 };
 
-window.onload = pullTimeline;
+window.onload = () => { 
+	pullTimeline();
+	document.getElementById("pullTimeline").onclick = pullTimeline;
+}
