@@ -1,31 +1,12 @@
 <html>
-	<head>Hello world</head>
+	<head>
+		<h1>Hello world</h1>
+		<script src="/js/pullTimeline.js"></script>
+	</head>
 	<body>
 		<div>
 			<button type="button" onclick="pullTimeline()">Pull timeline</button>
 		</div>
 		<div id="timeline"></div>
 	</body>
-
-	<script>
-		const endpoint = "http://localhost:8080/api/1.0/twitter/timeline"
-		const timelineDiv = document.getElementById("timeline");
-		const pullTimeline = () => {
-			const xhttp = new XMLHttpRequest();
-			xhttp.onload = () => {
-				if (xhttp.status == 200) {
-					timelineDiv.innerHTML = xhttp.responseText;
-				} else if (xhttp.status == 500) {
-					timelineDiv.innerHTML = "Pull timeline failed.";
-					console.log(xhttp.responseText);
-				}
-			};
-			xhttp.onerror = () => {
-				timelineDiv.innerHTML = "An error has occurred. Please contact system administrator.";
-			  	console.log("An error has occurred during attempt to make a request to ", endpoint);
-			};
-			xhttp.open("GET", endpoint, true);
-			xhttp.send(); 
-		}
-	</script>
 </html>

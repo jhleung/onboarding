@@ -1,17 +1,28 @@
 const path = require('path');
-const filePath = path.join(__dirname, '../index.html');
 const http = require('http');
 const fs = require('fs');
+const url = require("url");
 
-const server = http.createServer((req, res) => {
-	fs.readFile(filePath, (err, html) => {
+const readFile = (file, res) => {
+	fs.readFile(file, (err, data) => {
 		if(err) {
 			res.writeHead(404);
 			res.write("Not Found!");
 		} else {
-			res.writeHead(200, {'Content-Type': 'text/html'});
-			res.write(html);
+			res.writeHead(200);
+			res.write(data);
 		}
 		res.end();
 	})
+}
+
+const server = http.createServer((req, res) => {
+	const pathname = url.parse(req.url).pathname;
+	if (pathname == '/')
+		readFile(path.join(__dirname, '../index.html'), res);
+	else if (pathname == '/js/pullTimeline.js') {
+		readFile(path.join(__dirname, '/pullTimeline.js'), res);
+	}
 }).listen(9000);
+
+
