@@ -20,6 +20,8 @@ const server = http.createServer((req, res) => {
 	const pathname = url.parse(req.url).pathname;
 	if (pathname == '/')
 		readFile(path.join(__dirname, '../index.html'), res);
+	else if (pathname == '/main.css')
+		readFile(path.join(__dirname, '../main.css'), res);
 	else if (pathname == '/js/pullTimeline.js') {
 		readFile(path.join(__dirname, '/pullTimeline.js'), res);
 	}

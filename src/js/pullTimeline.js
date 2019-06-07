@@ -7,28 +7,37 @@ const formatTimeline = (rawTimeline) => {
 	innerTimelineDiv.id = "timeline-inner";
 
 	tweets = JSON.parse(rawTimeline).forEach((tweet, i) => {
-		const tweetDiv = document.createElement("div");
-
+		const tweetDivWrapper = document.createElement("div");
+		
 		if (i % 2 == 0) 
-			tweetDiv.style.backgroundColor="lightsteelblue";
+			tweetDivWrapper.className = "tweet-style-one";
+		else 
+			tweetDivWrapper.className = "tweet-style-two";
 
+		const tweetDiv = document.createElement("div");
+		tweetDiv.className = "tweet";
+		
 		const profileImg = document.createElement("img");
-		profileImg.src = tweet.profileImageUrl;
+		profileImg.className = "profile-image";
+		profileImg.src = tweet.user.profileImageUrl;
 		tweetDiv.appendChild(profileImg);
 
 		const timestampSpan = document.createElement("span");
 		const timestamp = new Date(tweet.createdAt);
+		timestampSpan.className = "timestamp";
 		timestampSpan.innerText = timestamp.getFullYear() + "-" + timestamp.getMonth() + "-" + timestamp.getDay() + " " + timestamp.getHours() + ":" + timestamp.getMinutes() + ":" + timestamp.getSeconds();
 		tweetDiv.appendChild(timestampSpan);
 
 		const messageLink = document.createElement("a");
+		messageLink.className = "message-link";
 		messageLink.target = "_blank";
 		messageLink.rel = "noopener noreferrer";
-		messageLink.href = "https://twitter.com/" + tweet.handle + "/status/" + tweet.id;
+		messageLink.href = "https://twitter.com/" + tweet.user.handle + "/status/" + tweet.id;
 		messageLink.innerHTML = tweet.message;
 		tweetDiv.appendChild(messageLink);
 
-		innerTimelineDiv.appendChild(tweetDiv);
+		tweetDivWrapper.appendChild(tweetDiv);
+		innerTimelineDiv.appendChild(tweetDivWrapper);
 	});
 
 	timelineDiv.appendChild(innerTimelineDiv);
