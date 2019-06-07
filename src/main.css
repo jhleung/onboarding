@@ -1,16 +1,16 @@
 * {
-	font-family: Montserrat;
+    font-family: Montserrat;
 }
 
 #title {
-	text-align: center;
-  	font-size: 40pt;
- 	font-weight: bold;
+    text-align: center;
+    font-size: 40pt;
+    font-weight: bold;
 }
 
 #timeline-inner {
-	border: 1px solid;
-	margin: 20px;
+    border: 1px solid;
+    margin: 20px;
 }
 
 #timeline-inner > div {
@@ -18,34 +18,34 @@
 }
 
 div.tweet-style-one {
-	background-color: #e8f5fd;
+    background-color: #e8f5fd;
 }
 
 div.tweet-style-two {
-	background-color: #e9e9e9;
+    background-color: #e9e9e9;
 }
 
 img.profile-image {
-	width: 75px;
-	height: 75px;
-	margin: 10px;
+    width: 75px;
+    height: 75px;
+    margin: 10px;
 }
 
 span.timestamp {
-	font-style: italic;
-	font-size: 12px;
+    font-style: italic;
+    font-size: 12px;
 
-	position: absolute;
-	margin-top: 15px;
+    position: absolute;
+    margin-top: 15px;
 }
 
 a.message-link {
-	text-decoration: none;
-	font-size: 14px;
+    text-decoration: none;
+    font-size: 14px;
 
-	position: absolute;		
-	margin-top: 30px;
+    position: absolute;		
+    margin-top: 30px;
 
-	word-break: break-word;
-	width: inherit;
+    word-break: break-word;
+    width: inherit;
 }
