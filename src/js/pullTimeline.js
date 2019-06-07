@@ -7,16 +7,12 @@ const formatTimeline = (rawTimeline) => {
 	innerTimelineDiv.id = "timeline-inner";
 
 	tweets = JSON.parse(rawTimeline).forEach((tweet, i) => {
-		const tweetDivWrapper = document.createElement("div");
-		
-		if (i % 2 == 0) 
-			tweetDivWrapper.className = "tweet-style-one";
-		else 
-			tweetDivWrapper.className = "tweet-style-two";
-
 		const tweetDiv = document.createElement("div");
-		tweetDiv.className = "tweet";
-		
+		if (i % 2 == 0) 
+			tweetDiv.className = "tweet-style-one";
+		else 
+			tweetDiv.className = "tweet-style-two";
+
 		const profileImg = document.createElement("img");
 		profileImg.className = "profile-image";
 		profileImg.src = tweet.user.profileImageUrl;
@@ -36,8 +32,7 @@ const formatTimeline = (rawTimeline) => {
 		messageLink.innerHTML = tweet.message;
 		tweetDiv.appendChild(messageLink);
 
-		tweetDivWrapper.appendChild(tweetDiv);
-		innerTimelineDiv.appendChild(tweetDivWrapper);
+		innerTimelineDiv.appendChild(tweetDiv);
 	});
 
 	timelineDiv.appendChild(innerTimelineDiv);

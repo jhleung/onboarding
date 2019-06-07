@@ -14,10 +14,7 @@
 }
 
 #timeline-inner > div {
-	display: flex;
-    align-items: center;
     position: relative;
-    overflow: hidden;
 }
 
 div.tweet-style-one {
