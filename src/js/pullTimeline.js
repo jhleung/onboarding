@@ -8,31 +8,31 @@ const formatTimeline = (rawTimeline) => {
 
 	tweets = JSON.parse(rawTimeline).forEach((tweet, i) => {
 		const tweetDiv = document.createElement("div");
-		if (i % 2 == 0) 
-			tweetDiv.className = "tweet-style-one";
-		else 
-			tweetDiv.className = "tweet-style-two";
+			if (i % 2 == 0) 
+				tweetDiv.className = "tweet-style-one";
+			else 		
+				tweetDiv.className = "tweet-style-two";
 
-		const profileImg = document.createElement("img");
-		profileImg.className = "profile-image";
-		profileImg.src = tweet.user.profileImageUrl;
-		tweetDiv.appendChild(profileImg);
+			const profileImg = document.createElement("img");
+			profileImg.className = "profile-image";
+			profileImg.src = tweet.user.profileImageUrl;
+			tweetDiv.appendChild(profileImg);
 
-		const timestampSpan = document.createElement("span");
-		const timestamp = new Date(tweet.createdAt);
-		timestampSpan.className = "timestamp";
-		timestampSpan.innerText = timestamp.getFullYear() + "-" + timestamp.getMonth() + "-" + timestamp.getDay() + " " + timestamp.getHours() + ":" + timestamp.getMinutes() + ":" + timestamp.getSeconds();
-		tweetDiv.appendChild(timestampSpan);
+			const timestampSpan = document.createElement("span");
+			const timestamp = new Date(tweet.createdAt);
+			timestampSpan.className = "timestamp";
+			timestampSpan.innerText = timestamp.getFullYear() + "-" + timestamp.getMonth() + "-" + timestamp.getDay() + " " + timestamp.getHours() + ":" + timestamp.getMinutes() + ":" + timestamp.getSeconds();
+			tweetDiv.appendChild(timestampSpan);
 
-		const messageLink = document.createElement("a");
-		messageLink.className = "message-link";
-		messageLink.target = "_blank";
-		messageLink.rel = "noopener noreferrer";
-		messageLink.href = "https://twitter.com/" + tweet.user.handle + "/status/" + tweet.id;
-		messageLink.innerHTML = tweet.message;
-		tweetDiv.appendChild(messageLink);
+			const messageLink = document.createElement("a");
+			messageLink.className = "message-link";
+			messageLink.target = "_blank";
+			messageLink.rel = "noopener noreferrer";
+			messageLink.href = "https://twitter.com/" + tweet.user.handle + "/status/" + tweet.id;
+			messageLink.innerHTML = tweet.message;
+			tweetDiv.appendChild(messageLink);
 
-		innerTimelineDiv.appendChild(tweetDiv);
+			innerTimelineDiv.appendChild(tweetDiv);
 	});
 
 	timelineDiv.appendChild(innerTimelineDiv);
@@ -51,7 +51,7 @@ const pullTimeline = () => {
 		}
 	};
 	xhttp.onerror = () => {
-	  	console.log("An error has occurred during attempt to make a request to ", endpoint);
+		console.log("An error has occurred during attempt to make a request to ", endpoint);
 		innerTimelineDiv.innerHTML = "An error has occurred. Please contact system administrator.";
 	};
 
