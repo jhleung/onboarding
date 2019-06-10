@@ -27,15 +27,15 @@ div.tweet-style-two {
 
 div.profile {
     display: inline-block;
-    width: 11vw;
-    height: 10vh;
+    width: 175px;
+    height: 100px;
     margin-top: 10px;
     vertical-align: middle;
 }
 
 div.message {
     display: inline-block;
-    width: 82vw;
+    width: 80%;
     vertical-align: middle;
 }
 
@@ -72,5 +72,4 @@ a.message-link {
     font-size: 14px;
 
     word-break: break-word;
-    width: inherit;
 }
