@@ -64,7 +64,6 @@ img.profile-image {
 }
 
 div.name {
-    display: block;
     font-size: 14px;
     font-weight: bold;
     text-align: center;
@@ -72,20 +71,17 @@ div.name {
 }
 
 div.handle {
-    display: block;
     text-align: center;
     font-size: 12px;
 }
 
 div.timestamp {
-    display: block;
     font-style: italic;
     font-size: 10px;
     padding-bottom: 4px;
 }
 
 a.message-link {
-    display: block;
     text-decoration: none;
     font-size: 14px;
     color: black;
