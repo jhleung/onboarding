@@ -23,7 +23,7 @@
 }
 
 #timeline-inner > div {
-    border: 2px solid lightgrey;
+    border: 0.5px solid lightgrey;
 }
 
 div.error {
