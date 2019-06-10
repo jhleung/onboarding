@@ -2,6 +2,11 @@ const formatTimeline = (rawTimeline) => {
 	const timelineDiv = document.getElementById("timeline");
 	var innerTimelineDiv = document.getElementById("timeline-inner");
 	
+innerTimelineDiv.innerHTML = "";
+	var errorDiv = document.getElementById("error");
+	if (errorDiv != null) 	
+		timelineDiv.removeChild(errorDiv);
+
 	timelineDiv.removeChild(innerTimelineDiv);
 	innerTimelineDiv = document.createElement("div");
 	innerTimelineDiv.id = "timeline-inner";
@@ -35,7 +40,7 @@ const formatTimeline = (rawTimeline) => {
 
 			const messageDiv = document.createElement("div");
 			messageDiv.className = "message";
-			
+
 			const timestampSpan = document.createElement("span");
 			const timestamp = new Date(tweet.createdAt);
 			timestampSpan.className = "timestamp";
@@ -69,12 +74,18 @@ const pullTimeline = () => {
 			formatTimeline(xhttp.responseText);
 		} else if (xhttp.status == 500) {
 			console.log(xhttp.responseText);
-			innerTimelineDiv.innerHTML = "Pull timeline failed.";
+			const errorMsg = document.createElement("div");
+			errorMsg.className = "error";
+			errorMsg.innerHTML = "Pull timeline failed.";
+			innerTimelineDiv.appendChild(errorMsg);
 		}
 	};
 	xhttp.onerror = () => {
 		console.log("An error has occurred during attempt to make a request to ", endpoint);
-		innerTimelineDiv.innerHTML = "An error has occurred. Please contact system administrator.";
+		const errorMsg = document.createElement("div");
+		errorMsg.className = "error";
+		errorMsg.innerHTML = "An error has occurred. Please contact system administrator.";
+		innerTimelineDiv.appendChild(errorMsg);
 	};
 
 	xhttp.open("GET", endpoint, true);

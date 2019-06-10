@@ -12,6 +12,11 @@
     margin-left: 40px;
 }
 
+#pullTimeline {
+    padding: 5px;
+    border-radius: 10px;
+}
+
 #timeline-inner {
     border: 1px solid;
     margin: 10px 40px 40px 40px;
@@ -19,6 +24,10 @@
 
 #timeline-inner > div {
     border: 1px solid lightgrey;
+}
+
+div.error {
+    padding: 10px;
 }
 
 div.tweet-style-one {
@@ -78,6 +87,6 @@ a.message-link {
     display: block;
     text-decoration: none;
     font-size: 14px;
-
+    color: black;
     word-break: break-word;
 }
