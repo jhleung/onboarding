@@ -13,16 +13,36 @@ const formatTimeline = (rawTimeline) => {
 			else 		
 				tweetDiv.className = "tweet-style-two";
 
+			const profileDiv = document.createElement("div");
+			profileDiv.className = "profile";
+
 			const profileImg = document.createElement("img");
 			profileImg.className = "profile-image";
 			profileImg.src = tweet.user.profileImageUrl;
-			tweetDiv.appendChild(profileImg);
+			profileDiv.appendChild(profileImg);
 
+			const nameDiv = document.createElement("span");
+			nameDiv.className = "name";
+			nameDiv.innerHTML = tweet.user.name;
+			profileDiv.appendChild(nameDiv);
+
+			const handleDiv = document.createElement("span");
+			handleDiv.className = "handle";
+			handleDiv.innerHTML = tweet.user.handle;
+			profileDiv.appendChild(handleDiv);
+
+			tweetDiv.appendChild(profileDiv);
+
+			const messageDiv = document.createElement("div");
+			messageDiv.className = "message";
+			
 			const timestampSpan = document.createElement("span");
 			const timestamp = new Date(tweet.createdAt);
 			timestampSpan.className = "timestamp";
-			timestampSpan.innerText = timestamp.getFullYear() + "-" + timestamp.getMonth() + "-" + timestamp.getDay() + " " + timestamp.getHours() + ":" + timestamp.getMinutes() + ":" + timestamp.getSeconds();
-			tweetDiv.appendChild(timestampSpan);
+
+			const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+			timestampSpan.innerText = months[timestamp.getMonth()] + " " + timestamp.getDay();
+			messageDiv.appendChild(timestampSpan);
 
 			const messageLink = document.createElement("a");
 			messageLink.className = "message-link";
@@ -30,7 +50,9 @@ const formatTimeline = (rawTimeline) => {
 			messageLink.rel = "noopener noreferrer";
 			messageLink.href = "https://twitter.com/" + tweet.user.handle + "/status/" + tweet.id;
 			messageLink.innerHTML = tweet.message;
-			tweetDiv.appendChild(messageLink);
+			messageDiv.appendChild(messageLink);
+
+			tweetDiv.appendChild(messageDiv);
 
 			innerTimelineDiv.appendChild(tweetDiv);
 	});
