@@ -30,12 +30,12 @@ innerTimelineDiv.innerHTML = "";
 			profileImg.src = tweet.user.profileImageUrl;
 			profileDiv.appendChild(profileImg);
 
-			const nameDiv = document.createElement("span");
+			const nameDiv = document.createElement("div");
 			nameDiv.className = "name";
 			nameDiv.innerHTML = tweet.user.name;
 			profileDiv.appendChild(nameDiv);
 
-			const handleDiv = document.createElement("span");
+			const handleDiv = document.createElement("div");
 			handleDiv.className = "handle";
 			handleDiv.innerHTML = tweet.user.handle;
 			profileDiv.appendChild(handleDiv);
@@ -45,7 +45,7 @@ innerTimelineDiv.innerHTML = "";
 			const messageDiv = document.createElement("div");
 			messageDiv.className = "message";
 
-			const timestampSpan = document.createElement("span");
+			const timestampSpan = document.createElement("div");
 			const timestamp = new Date(tweet.createdAt);
 			timestampSpan.className = "timestamp";
 
