@@ -11,12 +11,16 @@ innerTimelineDiv.innerHTML = "";
 	innerTimelineDiv = document.createElement("div");
 	innerTimelineDiv.id = "timeline-inner";
 
-	tweets = JSON.parse(rawTimeline).forEach((tweet, i) => {
+	obj = JSON.parse(rawTimeline);
+	tweets = obj.forEach((tweet, i) => {
 		const tweetDiv = document.createElement("div");
 			if (i % 2 == 0) 
 				tweetDiv.className = "tweet-style-one";
 			else 		
 				tweetDiv.className = "tweet-style-two";
+
+			if (i == obj.length - 1)
+				tweetDiv.className += "-last-tweet"
 
 			const profileDiv = document.createElement("div");
 			profileDiv.className = "profile";
