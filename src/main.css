@@ -44,7 +44,8 @@ div.profile {
     display: inline-block;
     width: 175px;
     height: 110px;
-    margin-top: 10px;
+    margin-top: 15px;
+    margin-bottom: 5px;
     vertical-align: middle;
 }
 
