@@ -1,3 +1,6 @@
+$tweet-style-one-color: #e8f5fd;
+$tweet-style-two-color: #e9e9e9;
+
 * {
     font-family: Montserrat;
 }
@@ -27,22 +30,22 @@ div.error {
 }
 
 div.tweet-style-one-last-tweet {
-    background-color: #e8f5fd;
+    background-color: $tweet-style-one-color;
     border-bottom: 0px;
 }
 
 div.tweet-style-two-last-tweet {
-    background-color: #e9e9e9;
+    background-color: $tweet-style-two-color;
     border-bottom: 0px;
 }
 
 div.tweet-style-one {
-    background-color: #e8f5fd;
+    background-color: $tweet-style-one-color;
     border-bottom: 1px solid lightgrey;
 }
 
 div.tweet-style-two {
-    background-color: #e9e9e9;
+    background-color: $tweet-style-two-color;
     border-bottom: 1px solid lightgrey;
 }
 
