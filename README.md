@@ -12,15 +12,10 @@ Using node:
 Using webpack:
 1. Ensure you have node installed ```node -v```
 
-2. Ensure you hvave npm installed ```npm -v```
+2. Ensure you have npm installed ```npm -v```
 
-3. Ensure you have webpack and webpack-dev-server installed. 
-```npm i webpack webpack-cli webpack-dev-server```
+3. run ```git clone https://github.com/jhleung/onboarding```
 
-optionally install it globally: ```npm i -g webpack webpack-cli webpack-dev-server```
+4. run ```cd onboarding && npm install```
 
-4. run ```git clone https://github.com/jhleung/onboarding```
-
-5. run ```cd onboarding && npm install```
-
-6. run ```npm run dev```
+5. run ```npm run dev```
