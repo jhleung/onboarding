@@ -10,7 +10,10 @@ Using node:
 4. open up http://localhost:9000 in your browser
 
 Using webpack:
-1. Ensure you have webpack and webpack-dev-server installed. ```npm i -g webpack webpack-dev-server```
+1. Ensure you have webpack and webpack-dev-server installed. 
+```npm i webpack webpack-dev-server```
+
+optionally install it globally: ```npm i -g webpack webpack-dev-server```
 
 2. run ```git clone https://github.com/jhleung/onboarding```
 
