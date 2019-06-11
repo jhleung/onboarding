@@ -10,13 +10,17 @@ Using node:
 4. open up http://localhost:9000 in your browser
 
 Using webpack:
-1. Ensure you have webpack and webpack-dev-server installed. 
-```npm i webpack webpack-dev-server```
+1. Ensure you have node installed ```node -v```
 
-optionally install it globally: ```npm i -g webpack webpack-dev-server```
+2. Ensure you hvave npm installed ```npm -v```
 
-2. run ```git clone https://github.com/jhleung/onboarding```
+3. Ensure you have webpack and webpack-dev-server installed. 
+```npm i webpack webpack-cli webpack-dev-server```
 
-3. run ```cd onboarding && npm install```
+optionally install it globally: ```npm i -g webpack webpack-cli webpack-dev-server```
 
-4. run ```npm run dev```
+4. run ```git clone https://github.com/jhleung/onboarding```
+
+5. run ```cd onboarding && npm install```
+
+6. run ```npm run dev```
