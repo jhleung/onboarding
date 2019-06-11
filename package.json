@@ -1,0 +1,27 @@
+{
+  "name": "onboarding-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "webpack": "^4.33.0",
+    "webpack-dev-server": "^3.7.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^2.0.13"
+  },
+  "scripts": {
+    "hello": "echo hello",
+    "dev": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhleung/onboarding.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jhleung/onboarding/issues"
+  },
+  "homepage": "https://github.com/jhleung/onboarding#readme"
+}
