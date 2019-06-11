@@ -1,6 +1,16 @@
 $tweet-style-one-color: #e8f5fd;
 $tweet-style-two-color: #e9e9e9;
 
+@mixin dimensions($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin tweet-style($background-color, $border-bottom) {
+    background-color: $background-color;
+    border-bottom: $border-bottom;
+}
+
 * {
     font-family: Montserrat;
 }
@@ -30,29 +40,24 @@ div.error {
 }
 
 div.tweet-style-one-last-tweet {
-    background-color: $tweet-style-one-color;
-    border-bottom: 0px;
+    @include tweet-style($tweet-style-one-color, 0px);
 }
 
 div.tweet-style-two-last-tweet {
-    background-color: $tweet-style-two-color;
-    border-bottom: 0px;
+    @include tweet-style($tweet-style-two-color, 0px);
 }
 
 div.tweet-style-one {
-    background-color: $tweet-style-one-color;
-    border-bottom: 1px solid lightgrey;
+    @include tweet-style($tweet-style-one-color, 1px solid lightgrey);
 }
 
 div.tweet-style-two {
-    background-color: $tweet-style-two-color;
-    border-bottom: 1px solid lightgrey;
+    @include tweet-style($tweet-style-two-color, 1px solid lightgrey);
 }
 
 div.profile {
     display: inline-block;
-    width: 175px;
-    height: 110px;
+    @include dimensions(175px, 110px);
     margin: 15px 0 5px;
     vertical-align: middle;
 }
@@ -65,8 +70,7 @@ div.message {
 
 img.profile-image {
     display: block;
-    width: 60px;
-    height: 60px;
+    @include dimensions(60px, 60px);
     border-radius: 50%;
     margin: 0 auto 5px;
 }
