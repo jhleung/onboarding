@@ -4,10 +4,10 @@ import '../main.scss';
 
 const formatTimeline = (rawTimeline) => {
 	const timelineDiv = document.getElementById("timeline");
-	var innerTimelineDiv = document.getElementById("timeline-inner");
+	let innerTimelineDiv = document.getElementById("timeline-inner");
 	
 innerTimelineDiv.innerHTML = "";
-	var errorDiv = document.getElementById("error");
+	const errorDiv = document.getElementById("error");
 	if (errorDiv != null) 	
 		timelineDiv.removeChild(errorDiv);
 
@@ -15,8 +15,8 @@ innerTimelineDiv.innerHTML = "";
 	innerTimelineDiv = document.createElement("div");
 	innerTimelineDiv.id = "timeline-inner";
 
-	var obj = JSON.parse(rawTimeline);
-	var tweets = obj.forEach((tweet, i) => {
+	const obj = JSON.parse(rawTimeline);
+	obj.forEach((tweet, i) => {
 		const tweetDiv = document.createElement("div");
 			if (i % 2 == 0) 
 				tweetDiv.className = "tweet-style-one";
@@ -61,7 +61,7 @@ innerTimelineDiv.innerHTML = "";
 			messageLink.className = "message-link";
 			messageLink.target = "_blank";
 			messageLink.rel = "noopener noreferrer";
-			messageLink.href = "https://twitter.com/" + tweet.user.handle + "/status/" + tweet.id;
+			messageLink.href = "https://twitter.com/${tweet.user.handle}/status/${tweet.id}";
 			messageLink.innerHTML = tweet.message;
 			messageDiv.appendChild(messageLink);
 
@@ -75,7 +75,7 @@ innerTimelineDiv.innerHTML = "";
 
 const pullTimeline = () => { 
 	const timelineDiv = document.getElementById("timeline");
-	var innerTimelineDiv = document.getElementById("timeline-inner");
+	let innerTimelineDiv = document.getElementById("timeline-inner");
 	const endpoint = "http://localhost:8080/api/1.0/twitter/timeline"
 	const xhttp = new XMLHttpRequest();
 	xhttp.onload = () => {
