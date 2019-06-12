@@ -19,15 +19,20 @@ module.exports = {
 		  	{
 		  		exclude: path.join(__dirname, '/src/js/main.js')
 		  	},
-			{
-            	test: /\.scss$/,
-            	use: ["style-loader", MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
-        	}
+				{
+          	test: /\.scss$/,
+           	use: ["style-loader", MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+       	},
+	  		{
+        	test: /\.(js|jsx)$/,
+        	exclude: /node_modules/,
+        	use: ['babel-loader']
+      	}
 		]
 	},
-	 plugins: [
-     	new MiniCssExtractPlugin({
-        	filename: 'main.css'
+	plugins: [
+	 	new MiniCssExtractPlugin({
+			filename: 'main.css'
     	})
     ]
 }

@@ -1,3 +1,5 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 import '../main.scss';
 
 const formatTimeline = (rawTimeline) => {
@@ -112,3 +114,16 @@ window.onload = () => {
 	pullTimeline();
 	document.getElementById("pullTimeline").onclick = pullTimeline;
 }
+
+
+class HelloReact extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return(<h1>{"hello react!"}</h1>);
+  }
+}
+
+ReactDOM.render(<HelloReact />, document.getElementById('hello-react'));
