@@ -7,4 +7,6 @@ class HelloReact extends React.Component {
   	}
 }
 
-ReactDOM.render(<HelloReact />, document.getElementById('hello-react'));
+document.addEventListener("DOMContentLoaded", () => {
+	ReactDOM.render(<HelloReact />, document.getElementById('hello-react'));
+});
