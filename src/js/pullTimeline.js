@@ -1,4 +1,5 @@
 import '../main.scss';
+import './helloReact.js';
 
 const formatTimeline = (rawTimeline) => {
 	const timelineDiv = document.getElementById("timeline");
