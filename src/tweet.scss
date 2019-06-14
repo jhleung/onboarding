@@ -1,0 +1,19 @@
+@import "utilities";
+
+#timeline-inner {
+	.tweet-style-one-last-tweet {
+	    @include tweet-style($tweet-style-one-color, 0px);
+	}
+
+	.tweet-style-two-last-tweet {
+	    @include tweet-style($tweet-style-two-color, 0px);
+	}
+
+	.tweet-style-one {
+	    @include tweet-style($tweet-style-one-color, 1px solid lightgrey);
+	}
+
+	.tweet-style-two {
+	    @include tweet-style($tweet-style-two-color, 1px solid lightgrey);
+	}
+}
