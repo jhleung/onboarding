@@ -1,5 +1,6 @@
 $tweet-style-one-color: #e8f5fd;
 $tweet-style-two-color: #e9e9e9;
+$message-text-color: black;
 
 @mixin dimensions($width, $height) {
     width: $width;
@@ -30,72 +31,73 @@ $tweet-style-two-color: #e9e9e9;
     border-radius: 10px;
 }
 
+
 #timeline-inner {
     border: 1px solid;
     margin: 10px 40px 40px;
 
     .error {
-        padding: 10px;
+	padding: 10px;
     }
-    
+
     .tweet-style-one-last-tweet {
-        @include tweet-style($tweet-style-one-color, 0px);
+	@include tweet-style($tweet-style-one-color, 0px);
     }
-    
+
     .tweet-style-two-last-tweet {
-        @include tweet-style($tweet-style-two-color, 0px);
+	@include tweet-style($tweet-style-two-color, 0px);
     }
-    
+
     .tweet-style-one {
-        @include tweet-style($tweet-style-one-color, 1px solid lightgrey);
+	@include tweet-style($tweet-style-one-color, 1px solid lightgrey);
     }
 
     .tweet-style-two {
-        @include tweet-style($tweet-style-two-color, 1px solid lightgrey);
+	@include tweet-style($tweet-style-two-color, 1px solid lightgrey);
     }
 
     .profile {
-        display: inline-block;
-        @include dimensions(175px, 110px);
-        margin: 15px 0 5px;
-        vertical-align: middle;
-    }
-    
-    .profile-image {
-        display: block;
-        @include dimensions(60px, 60px);
-        border-radius: 50%;
-        margin: 0 auto 5px;
+	display: inline-block;
+	@include dimensions(175px, 110px);
+	margin: 15px 0 5px;
+	vertical-align: middle;
+
+	.profile-image {
+	    display: block;
+	    @include dimensions(60px, 60px);
+	    border-radius: 50%;
+	    margin: 0 auto 5px;
+	}   
+
+	.name {
+	    font-size: 14px;
+	    font-weight: bold;
+	    text-align: center;
+	    margin-bottom: 5px;
+	}
+
+	.handle {
+	    text-align: center;
+	    font-size: 12px;
+	}
     }
 
     .message {
-        display: inline-block;
-        width: 75vw;
-        vertical-align: middle;
-    }   
+	display: inline-block;
+	width: 75vw;
+	vertical-align: middle;
 
-    .name {
-        font-size: 14px;
-        font-weight: bold;
-        text-align: center;
-        margin-bottom: 5px;
-    }
+	.timestamp {
+	    font-style: italic;
+	    font-size: 10px;
+	    padding-bottom: 4px;
+	}
 
-    .handle {
-        text-align: center;
-        font-size: 12px;
-    }
-
-    .timestamp {
-        font-style: italic;
-        font-size: 10px;
-        padding-bottom: 4px;
-    }
-
-    .message-link {
-        text-decoration: none;
-        font-size: 14px;
-        color: black;
-        word-break: break-word;
+	.message-link {
+	    text-decoration: none;
+	    font-size: 14px;
+	    color: $message-text-color;
+	    word-break: break-word;
+	}
     }
 }
