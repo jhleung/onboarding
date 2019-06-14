@@ -1,20 +1,22 @@
 @import "utilities";
 
-.message {
-    display: inline-block;
-    width: 75vw;
-    vertical-align: middle;
-}   
+#timeline-inner {
+    .message {
+        display: inline-block;
+        width: 75vw;
+        vertical-align: middle;
+    }   
 
-.timestamp {
-    font-style: italic;
-    font-size: 10px;
-    padding-bottom: 4px;
-}
+    .timestamp {
+        font-style: italic;
+        font-size: 10px;
+        padding-bottom: 4px;
+    }
 
-.message-link {
-    text-decoration: none;
-    font-size: 14px;
-    color: $message-text-color;
-    word-break: break-word;
+    .message-link {
+        text-decoration: none;
+        font-size: 14px;
+        color: $message-text-color;
+        word-break: break-word;
+    }
 }
