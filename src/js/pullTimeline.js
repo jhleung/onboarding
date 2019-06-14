@@ -1,3 +1,5 @@
+import '../main.scss';
+
 const formatTimeline = (rawTimeline) => {
 	const timelineDiv = document.getElementById("timeline");
 	var innerTimelineDiv = document.getElementById("timeline-inner");
@@ -11,8 +13,8 @@ innerTimelineDiv.innerHTML = "";
 	innerTimelineDiv = document.createElement("div");
 	innerTimelineDiv.id = "timeline-inner";
 
-	obj = JSON.parse(rawTimeline);
-	tweets = obj.forEach((tweet, i) => {
+	var obj = JSON.parse(rawTimeline);
+	var tweets = obj.forEach((tweet, i) => {
 		const tweetDiv = document.createElement("div");
 			if (i % 2 == 0) 
 				tweetDiv.className = "tweet-style-one";
