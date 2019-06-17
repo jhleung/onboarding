@@ -45,13 +45,13 @@ const formatTimeline = (rawTimeline) => {
 	const messageDiv = document.createElement('div');
 	messageDiv.className = 'message';
 
-	const timestampSpan = document.createElement('div');
+	const timestampDiv = document.createElement('div');
 	const timestamp = new Date(tweet.createdAt);
-	timestampSpan.className = 'timestamp';
+	timestampDiv.className = 'timestamp';
 
 	const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-	timestampSpan.innerText = months[timestamp.getMonth()] + ' ' + timestamp.getDay();
-	messageDiv.appendChild(timestampSpan);
+	timestampDiv.innerText = months[timestamp.getMonth()] + ' ' + timestamp.getDay();
+	messageDiv.appendChild(timestampDiv);
 
 	const messageLink = document.createElement('a');
 	messageLink.className = 'message-link';
