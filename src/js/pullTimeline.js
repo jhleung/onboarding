@@ -1,24 +1,23 @@
-const pullTimeline = (getResponseText) => {
+const pullTimeline = (success, error) => {
     const endpoint = "http://localhost:8080/api/1.0/twitter/timeline"
     const xhttp = new XMLHttpRequest();
-    let responsePromise = new Promise((resolve, reject) => {
-	xhttp.onload = () => {
-	    if (xhttp.status == 200) {
-		resolve(xhttp.responseText);
-	    } else {
-		reject("Pull timeline failed.");
-	    }
-	};
 
-	xhttp.onerror = () => {
-	    reject(`An error has occurred during attempt to make a request to  ${endpoint}`);
+    xhttp.onload = () => {
+	if (xhttp.status == 200) {
+		console.log("test");
+	    success(xhttp.responseText);
+		console.log("test3");
+	} else {
+	    error("Pull timeline failed.");
 	}
-    });
+    };
+
+    xhttp.onerror = () => {
+	error(`An error has occurred during attempt to make a request to  ${endpoint}`);
+    }
 
     xhttp.open("GET", endpoint, true);
     xhttp.send();
-
-    return responsePromise;
 }
 
-export {pullTimeline};
+export default pullTimeline;
