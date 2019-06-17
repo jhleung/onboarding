@@ -17,10 +17,7 @@ const formatTimeline = (rawTimeline) => {
     const obj = JSON.parse(rawTimeline);
     obj.forEach((tweet, i) => {
 	const tweetDiv = document.createElement('div');
-	if (i % 2 == 0) 
-	    tweetDiv.className = 'tweet-style-one';
-	else 		
-	    tweetDiv.className = 'tweet-style-two';
+	tweetDiv.className = i % 2 == 0 ? 'tweet-style-one' : 'tweet-style-two';
 
 	if (i == obj.length - 1)
 	    tweetDiv.className += '-last-tweet'
@@ -75,12 +72,12 @@ const formatTimeline = (rawTimeline) => {
 const pullTimeline = () => { 
     const timelineDiv = document.getElementById('timeline');
     let innerTimelineDiv = document.getElementById('timeline-inner');
-    const endpoint = 'http://localhost:8080/api/1.0/twitter/timeline'
+    const endpoint = 'http://localhost:8080/api/1.0/twitter/timeline';
     const xhttp = new XMLHttpRequest();
     xhttp.onload = () => {
 	if (xhttp.status == 200) {
 	    formatTimeline(xhttp.responseText);
-	} else if (xhttp.status == 500) {
+	} else {
 	    console.log(xhttp.responseText);
 	    timelineDiv.removeChild(innerTimelineDiv);
 	    const errorMsg = document.createElement('div');
@@ -90,7 +87,6 @@ const pullTimeline = () => {
 	    innerTimelineDiv.id = 'timeline-inner';
 	    innerTimelineDiv.appendChild(errorMsg);
 	    timelineDiv.appendChild(innerTimelineDiv);
-
 	}
     };
     xhttp.onerror = () => {
