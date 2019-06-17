@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import '../main.scss';
+import './helloReact.js';
 
 class Timeline extends React.Component {
     constructor(props) {
@@ -85,6 +86,14 @@ class Error extends React.Component {
     }
 }
 
+const pullTimeline = () => {
+    const endpoint = "http://localhost:8080/api/1.0/twitter/timeline"
+    const xhttp = new XMLHttpRequest();
+    xhttp.open("GET", endpoint, true);
+    xhttp.send();
+    return xhttp;
+}
+
 class App extends React.Component {
     constructor(props) {
 	super(props);
@@ -97,19 +106,17 @@ class App extends React.Component {
     }
 
     componentWillMount() {
-	this.pullTimeline();
+	this.handleOnClick();
     }
 
-    pullTimeline() {
-	const endpoint = "http://localhost:8080/api/1.0/twitter/timeline"
-	const xhttp = new XMLHttpRequest();
+    handleOnClick() {
+	const xhttp = pullTimeline();
 	xhttp.onload = () => {
 	    if (xhttp.status == 200) {
 		this.state.timeline = xhttp.responseText;
 		this.state.isError = false;
-	    } else if (xhttp.status == 500) {
-		console.log(xhttp.responseText);
-		this.state.errorMsg = "Pull timeline failed.";
+	    } else {
+		this.state.errorMsg = e;
 		this.state.isError = true;
 	    }
 	    this.setState(this.state);
@@ -117,25 +124,22 @@ class App extends React.Component {
 
 	xhttp.onerror = () => {
 	    console.log(`An error has occurred during attempt to make a request to  ${endpoint}`);
-	    this.state.errorMsg = "An error has occurred. Please contact system administrator.";
+	    this.state.errorMsg = e;
 	    this.state.isError = true;
 	    this.setState(this.state);
-	};
-
-	xhttp.open("GET", endpoint, true);
-	xhttp.send(); 
+	}
     };
 
     render() {
-	let timeline = this.state.isError ? <Error errorMsg={this.state.errorMsg}/> : <Timeline rawTimeline={this.state.timeline}/>
-	    return(
-		<div className="app">
-		    <div id="header">
-			<button type="button" id="pullTimeline" onClick={() => this.pullTimeline()}>Pull timeline</button>
-		    </div>
-		    <div id="timeline">{timeline}</div>	
-		</div>
-	    );
+	let timeline = this.state.isError ? <Error errorMsg={this.state.errorMsg}/> : <Timeline rawTimeline={this.state.timeline}/>;
+	return(
+	    <div className="app">
+	    <div id="header">
+	    <button type="button" id="pullTimeline" onClick={() => this.handleOnClick()}>Pull timeline</button>
+	    </div>
+	    <div id="timeline">{timeline}</div>	
+	    </div>
+	);
     }
 }
 
@@ -146,5 +150,6 @@ class HelloReact extends React.Component {
     }
 }
 
-ReactDOM.render(<App />, document.getElementById("app"));
-ReactDOM.render(<HelloReact />, document.getElementById('hello-react'));
+document.addEventListener("DOMContentLoaded", () => {
+    ReactDOM.render(<App />, document.getElementById("app"));
+});
