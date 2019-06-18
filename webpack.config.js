@@ -3,7 +3,7 @@ const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
-    entry: './src/js/pulltimeline.js',
+    entry: './src/js/app.js',
     output: {
 	path: path.join(__dirname, '/src'),
 	filename: 'bundle.js'

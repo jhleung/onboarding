@@ -12,6 +12,15 @@ $message-text-color: black;
     border-bottom: $border-bottom;
 }
 
+%timeline-container-shared {
+    border: 1px solid;
+    margin: 10px 40px 40px;
+}
+
+%margin-shared {
+    margin-left: 40px;
+}
+
 * {
     font-family: Montserrat;
 }
@@ -23,7 +32,11 @@ $message-text-color: black;
 }
 
 #header {
-    margin-left: 40px;
+    @extend %margin-shared;
+}
+
+#hello-react {
+    @extend %margin-shared;
 }
 
 #pullTimeline {
@@ -31,14 +44,13 @@ $message-text-color: black;
     border-radius: 10px;
 }
 
+.error {
+    @extend %timeline-container-shared;
+    padding: 10px;
+}
 
 #timeline-inner {
-    border: 1px solid;
-    margin: 10px 40px 40px;
-
-    .error {
-	padding: 10px;
-    }
+    @extend %timeline-container-shared;
 
     .tweet-style-one-last-tweet {
 	@include tweet-style($tweet-style-one-color, 0px);
