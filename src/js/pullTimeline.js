@@ -4,9 +4,7 @@ const pullTimeline = (success, error) => {
 
     xhttp.onload = () => {
 	if (xhttp.status == 200) {
-		console.log("test");
 	    success(xhttp.responseText);
-		console.log("test3");
 	} else {
 	    error("Pull timeline failed.");
 	}

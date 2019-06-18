@@ -39,10 +39,10 @@ class App extends React.Component {
 	let timeline = this.state.isError ? <Error errorMsg={this.state.errorMsg}/> : <Timeline rawTimeline={this.state.timeline}/>;
 	return(
 	    <div className="app">
-	    <div id="header">
-	    <button type="button" id="pullTimeline" onClick={() => this.handleOnClick()}>Pull timeline</button>
-	    </div>
-	    <div id="timeline">{timeline}</div>	
+	    	<div id="header">
+		    <button type="button" id="pullTimeline" onClick={() => this.handleOnClick()}>Pull timeline</button>
+		</div>
+	    	<div id="timeline">{timeline}</div>	
 	    </div>
 	);
     }
