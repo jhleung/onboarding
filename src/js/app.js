@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import '../main.scss';
-import './helloReact.js';
-import Timeline from './timeline.js';
-import Error from './error.js';
-import pullTimeline from './pullTimeline.js';
+import './components/helloReact.js';
+import Timeline from './components/timeline.js';
+import Error from './components/error.js';
+import pullTimeline from './utilities/pullTimeline.js';
 
 class App extends React.Component {
     constructor(props) {
