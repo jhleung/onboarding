@@ -4,9 +4,9 @@ import '../main.scss';
 import './components/helloReact.js';
 import Timeline from './components/timeline.js';
 import Error from './components/error.js';
-import pullTimeline from './utilities/pullTimeline.js';
+import pullTimeline from './services/pullTimeline.js';
 
-class App extends React.Component {
+export default class App extends React.Component {
     constructor(props) {
 	super(props);
 
