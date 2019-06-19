@@ -5,8 +5,6 @@ const createMockXHR = ()=> {
     const mockXHR = {
 	open: jest.fn(),
 	responseText: 'success',
-	// be aware we use *function* because we need to get *this* 
-	// from *new XmlHttpRequest()* call
 	send: jest.fn().mockImplementation(function(){   
 	    onload = this.onload.bind(this);
 	    onerror = this.onerror.bind(this);
