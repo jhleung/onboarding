@@ -19,3 +19,7 @@ Using webpack:
 4. run ```cd onboarding && npm install```
 
 5. run ```npm run dev```
+
+
+To run unit tests:
+```npm run test``` or ```npm test```
