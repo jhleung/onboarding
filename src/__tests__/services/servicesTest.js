@@ -1,62 +1,48 @@
 import pullTimeline from '../../js/services/pullTimeline.js';	
 
-let open, onerror, send, status, onload;
-const createMockXHR = ()=> {
-    const mockXHR = {
-	open: jest.fn(),
-	responseText: 'success',
-	send: jest.fn().mockImplementation(function(){   
-	    onload = this.onload.bind(this);
-	    onerror = this.onerror.bind(this);
-	})
-    }
+const createMockPromiseResolved = (status)=> {
+    const response = jest.fn();
+    response.status = status;
+    response.json = jest.fn(() => 'success');
+    return Promise.resolve(response);
+}
 
-    return mockXHR;
+const createMockPromiseRejected = ()=> {
+    const response = jest.fn();
+    return Promise.reject(response);
 }
 
 describe('Pull timeline', () => {
-    const oldXMLHttpRequest = window.XMLHttpRequest;
+    const oldFetch = window.fetch;
     const endpoint = 'http://localhost:8080/api/1.0/twitter/timeline';
 
     afterEach(() => {
-        window.XMLHttpRequest = oldXMLHttpRequest;
+        window.fetch = oldFetch;
     });
 
     it('should make call to correct endpoint', async () => {
-	const mockXHR = createMockXHR();
-	window.XMLHttpRequest = jest.fn(() => mockXHR);
-	await pullTimeline((responseText) => {}, (error) => {});
-	expect(mockXHR.send).toHaveBeenCalled();
-	expect(mockXHR.open).toHaveBeenCalledWith("GET", endpoint, true);
+	const mockPromise = createMockPromiseResolved(200);
+	window.fetch = jest.fn(() => mockPromise);
+	await pullTimeline();
+	expect(fetch).toHaveBeenCalledWith(endpoint);
     });
 
     it('should get success response from api call', async () => {
-	const mockXHR = createMockXHR();
-	mockXHR.status = 200;
-	window.XMLHttpRequest = jest.fn(() => mockXHR);
-	let successMsg;
-	await pullTimeline((responseText) => successMsg = responseText, jest.fn());
-	mockXHR.onload();
-	expect(successMsg).toEqual('success');
+	const mockPromise = createMockPromiseResolved(200);
+	window.fetch = jest.fn(() => mockPromise);
+	await pullTimeline().then((res) => expect(res).toEqual('success'));
     });
 
     it('should get error response from api call', async () => {
-	const mockXHR = createMockXHR();
-	mockXHR.status = 500;
-	window.XMLHttpRequest = jest.fn(() => mockXHR);
-	let errorMsg;
-	await pullTimeline(jest.fn(), (error) => errorMsg = error);
-	mockXHR.onload();
-	expect(errorMsg).toEqual('Pull timeline failed.');
+	const mockPromise = createMockPromiseResolved(500);
+	window.fetch = jest.fn(() => mockPromise);
+	await pullTimeline().catch((res) => expect(res).toEqual('Pull timeline failed.'));
     });
 
     it('should get network error response', async () => {
-	const mockXHR = createMockXHR();
-	window.XMLHttpRequest = jest.fn(() => mockXHR);
-	let errorMsg;
-	await pullTimeline(jest.fn(), (error) => errorMsg = error);
-	mockXHR.onerror();
-	expect(errorMsg).toEqual(`An error has occurred during attempt to make a request to ${endpoint}`);
+	const mockPromise = createMockPromiseRejected();
+	window.fetch = jest.fn(() => mockPromise);
+	await pullTimeline().catch((res) => expect(res).toEqual(`An error has occurred during attempt to make a request to ${endpoint}`));
     });
 
 });

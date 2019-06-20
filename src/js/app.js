@@ -22,12 +22,11 @@ export default class App extends React.Component {
     }
 
     handleOnClick() {
-	pullTimeline(
-	    (responseText) => {
+	pullTimeline().then((responseText) => {
 		this.state.timeline = responseText;
 		this.state.isError = false;
 		this.setState(this.state);
-	    }, (error) => {
+	    }).catch((error) => {
 		this.state.errorMsg = error;
 		console.log(error);
 		this.state.isError = true;
