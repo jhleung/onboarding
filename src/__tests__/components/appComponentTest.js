@@ -4,7 +4,7 @@ import App from '../../js/app.js';
 
 
 describe('App component', () => {
-    App.prototype.handleOnClick = jest.fn();
+    App.prototype.updateTimeline = jest.fn();
     it('should render app', () => {
 	const wrapper = shallow(<App />);
 	expect(wrapper.find('div.app').length).toEqual(1);

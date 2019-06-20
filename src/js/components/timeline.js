@@ -7,7 +7,7 @@ export default class Timeline extends React.Component {
     }
 
     render() {
-	const obj = JSON.parse(this.props.rawTimeline);
+	const obj = this.props.rawTimeline;
 	let tweets = [];
 	obj.forEach((tweet, i) => {
 	    let className = i % 2 == 0 ? "tweet-style-one" : "tweet-style-two";
