@@ -12,10 +12,16 @@
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
+    "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.0.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.8.0",
     "mini-css-extract-plugin": "^0.7.0",
     "node-sass": "^4.12.0",
+    "react-test-renderer": "^16.8.6",
     "sass": "^1.21.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
@@ -23,7 +29,8 @@
   },
   "scripts": {
     "hello": "echo hello",
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server",
+    "test": "jest --verbose"
   },
   "repository": {
     "type": "git",
@@ -34,5 +41,16 @@
   "bugs": {
     "url": "https://github.com/jhleung/onboarding/issues"
   },
-  "homepage": "https://github.com/jhleung/onboarding#readme"
+  "homepage": "https://github.com/jhleung/onboarding#readme",
+  "jest": {
+    "setupFilesAfterEnv": [
+      "./src/__tests__/setup/setupJest.js"
+    ],
+    "testPathIgnorePatterns": [
+      "./src/__tests__/setup/"
+    ],
+    "moduleNameMapper": {
+      "\\.scss$": "identity-obj-proxy" 
+    }
+  }
 }
