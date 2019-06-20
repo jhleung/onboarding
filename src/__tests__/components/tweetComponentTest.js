@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import Tweet from '../js/components/tweet.js';
+import Tweet from '../../js/components/tweet.js';
 
 describe('Tweet component', () => {
     it('should render tweet component', () => {

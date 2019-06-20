@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import Message from '../js/components/message.js';
+import Message from '../../js/components/message.js';
 
 describe('Message component', () => {
     it('should render message component', () => {

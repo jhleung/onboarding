@@ -1,4 +1,4 @@
-import pullTimeline from '../js/services/pullTimeline.js';	
+import pullTimeline from '../../js/services/pullTimeline.js';	
 
 let open, onerror, send, status, onload;
 const createMockXHR = ()=> {

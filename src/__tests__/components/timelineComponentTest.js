@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import Timeline from '../js/components/timeline.js';
+import Timeline from '../../js/components/timeline.js';
 
 describe('Timeline component', () => {
     it('should render timeline component', () => {

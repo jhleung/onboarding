@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import Error from '../js/components/error.js';
+import Error from '../../js/components/error.js';
 
 describe('Error component', () => {
     it('should render error component', () => {

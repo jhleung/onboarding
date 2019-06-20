@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import Profile from '../js/components/profile.js';
+import Profile from '../../js/components/profile.js';
 
 describe('Profile component', () => {
     it('should render profile component', () => {
