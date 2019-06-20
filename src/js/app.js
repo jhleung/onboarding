@@ -18,10 +18,10 @@ export default class App extends React.Component {
     }
 
     componentWillMount() {
-	this.handleOnClick();
+	this.updateTimeline();
     }
 
-    handleOnClick() {
+    updateTimeline() {
 	pullTimeline().then((responseText) => {
 		this.state.timeline = responseText;
 		this.state.isError = false;
@@ -39,7 +39,7 @@ export default class App extends React.Component {
 	return(
 	    <div className="app">
 	    	<div id="header">
-		    <button type="button" id="pullTimeline" onClick={() => this.handleOnClick()}>Pull timeline</button>
+		    <button type="button" id="pullTimeline" onClick={() => this.updateTimeline()}>Pull timeline</button>
 		</div>
 	    	<div id="timeline">{timeline}</div>	
 	    </div>
