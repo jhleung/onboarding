@@ -8,7 +8,7 @@ const pullTimeline = (timelineType) => {
 		reject(`Pull ${timelineType} timeline failed.`);
 	    }
 	}).catch((err) => {
-	    reject(`An error has occurred during attempt to make a request to ${endpoint}`);
+	    reject('An error has occurred. Please contact system administrator.');
 	});
     });
 }
