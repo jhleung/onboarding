@@ -4,12 +4,12 @@ import App from '../../js/app.js';
 
 
 describe('App component', () => {
-    App.prototype.updateTimeline = jest.fn();
+    App.prototype.updateHomeTimeline = jest.fn();
     it('should render app', () => {
 	const wrapper = shallow(<App />);
 	expect(wrapper.find('div.app').length).toEqual(1);
 	expect(wrapper.find('div#header').length).toEqual(1);
-	expect(wrapper.find('button#pullTimeline').length).toEqual(1);
+	expect(wrapper.find('button#pullHomeTimeline').length).toEqual(1);
 	expect(wrapper.find('div#timeline').length).toEqual(1);
     });
 

@@ -14,7 +14,7 @@ export default class Timeline extends React.Component {
 	    if (i == obj.length - 1)
 		className += "-last-tweet";
 
-	    tweets.push(<Tweet key={i} tweet={tweet} className={className}/>);
+	    tweets.push(<Tweet key={i} tweet={tweet} className={className} type={this.props.type}/>);
 	});
 
 	return(

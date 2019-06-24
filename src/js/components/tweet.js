@@ -10,7 +10,7 @@ export default class Tweet extends React.Component {
     render() {
 	return(
 	    <div className={this.props.className}>
-		<Profile profileImageUrl={this.props.tweet.user.profileImageUrl} userName={this.props.tweet.user.name} handle={this.props.tweet.user.handle}/>	
+		<Profile profileImageUrl={this.props.tweet.user.profileImageUrl} userName={this.props.tweet.user.name} handle={this.props.tweet.user.handle} type={this.props.type}/>	
 		<Message createdAt={this.props.tweet.createdAt} message={this.props.tweet.message} handle={this.props.tweet.user.handle} id={this.props.tweet.id}/>
 	    </div>
 	);

@@ -10,7 +10,7 @@ export default class Profile extends React.Component {
 	    <div className="profile">
 		<img className="profile-image" src={this.props.profileImageUrl}/>
 		<div className="name">{this.props.userName}</div>
-		<div className="handle">{this.props.handle}</div>
+		{this.props.type == 'home' && <div className="handle">{this.props.handle}</div>}
 	    </div>
 	);
     }
