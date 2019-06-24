@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import '../main.scss';
 import './components/helloReact.js';
-import Timeline from './components/timeline.js';
+import {HomeTimeline, UserTimeline} from './components/timeline.js';
 import Error from './components/error.js';
-import pullTimeline from './services/pullTimeline.js';
+import {pullHomeTimeline, pullUserTimeline} from './services/pullTimeline.js';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -24,7 +24,7 @@ export default class App extends React.Component {
     }
 
     updateHomeTimeline() {
-	pullTimeline('home').then((responseText) => {
+	pullHomeTimeline('home').then((responseText) => {
 	    this.state.homeTimeline = responseText;
 	    this.state.homeTimelineErrorMsg = null;
 	    this.setState(this.state);
@@ -36,7 +36,7 @@ export default class App extends React.Component {
     };
 
     updateUserTimeline() {
-	pullTimeline('user').then((responseText) => {
+	pullUserTimeline('user').then((responseText) => {
 	    console.log(responseText);
 	    if (responseText.length == 0) {
 		this.state.userTimelineErrorMsg = 'No tweets are available, post a tweet!';
@@ -53,8 +53,8 @@ export default class App extends React.Component {
     };
 
     render() {
-	let homeTimeline = this.state.homeTimelineErrorMsg != null ? <Error errorMsg={this.state.homeTimelineErrorMsg}/> : <Timeline rawTimeline={this.state.homeTimeline} type={'home'}/>;
-	let userTimeline = this.state.userTimelineErrorMsg != null ? <Error errorMsg={this.state.userTimelineErrorMsg}/> : <Timeline rawTimeline={this.state.userTimeline} type={'user'}/>;
+	let homeTimeline = this.state.homeTimelineErrorMsg != null ? <Error errorMsg={this.state.homeTimelineErrorMsg}/> : <HomeTimeline rawTimeline={this.state.homeTimeline}/>;
+	let userTimeline = this.state.userTimelineErrorMsg != null ? <Error errorMsg={this.state.userTimelineErrorMsg}/> : <UserTimeline rawTimeline={this.state.userTimeline}/>;
 	return(
 	    <div className="app">
 	       <div id="timeline">

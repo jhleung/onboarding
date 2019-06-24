@@ -1,4 +1,4 @@
-import pullTimeline from '../../js/services/pullTimeline.js';   
+import {pullTimeline} from '../../js/services/pullTimeline.js';   
 
 const createMockPromiseResolved = (status)=> {
     const response = jest.fn();
@@ -23,26 +23,26 @@ describe('Pull home timeline', () => {
     it('should make call to correct endpoint', async () => {
     const mockPromise = createMockPromiseResolved(200);
     window.fetch = jest.fn(() => mockPromise);
-    await pullTimeline('home');
+    await pullTimeline(endpoint);
     expect(fetch).toHaveBeenCalledWith(endpoint);
     });
 
     it('should get success response from api call', async () => {
     const mockPromise = createMockPromiseResolved(200);
     window.fetch = jest.fn(() => mockPromise);
-    await pullTimeline('home').then((res) => expect(res).toEqual('success'));
+    await pullTimeline(endpoint).then((res) => expect(res).toEqual('success'));
     });
 
     it('should get error response from api call', async () => {
     const mockPromise = createMockPromiseResolved(500);
     window.fetch = jest.fn(() => mockPromise);
-    await pullTimeline('home').catch((res) => expect(res).toEqual('Pull home timeline failed.'));
+    await pullTimeline(endpoint).catch((res) => expect(res).toEqual('Pull timeline failed.'));
     });
 
     it('should get network error response', async () => {
     const mockPromise = createMockPromiseRejected();
     window.fetch = jest.fn(() => mockPromise);
-    await pullTimeline('home').catch((res) => expect(res).toEqual(`An error has occurred. Please contact system administrator.`));
+    await pullTimeline(endpoint).catch((res) => expect(res).toEqual(`An error has occurred. Please contact system administrator.`));
     });
 
 });
@@ -59,26 +59,26 @@ describe('Pull user timeline', () => {
     it('should make call to correct endpoint', async () => {
     const mockPromise = createMockPromiseResolved(200);
     window.fetch = jest.fn(() => mockPromise);
-    await pullTimeline('user');
+    await pullTimeline(endpoint);
     expect(fetch).toHaveBeenCalledWith(endpoint);
     });
 
     it('should get success response from api call', async () => {
     const mockPromise = createMockPromiseResolved(200);
     window.fetch = jest.fn(() => mockPromise);
-    await pullTimeline('user').then((res) => expect(res).toEqual('success'));
+    await pullTimeline(endpoint).then((res) => expect(res).toEqual('success'));
     });
 
     it('should get error response from api call', async () => {
     const mockPromise = createMockPromiseResolved(500);
     window.fetch = jest.fn(() => mockPromise);
-    await pullTimeline('user').catch((res) => expect(res).toEqual('Pull user timeline failed.'));
+    await pullTimeline(endpoint).catch((res) => expect(res).toEqual('Pull timeline failed.'));
     });
 
     it('should get network error response', async () => {
     const mockPromise = createMockPromiseRejected();
     window.fetch = jest.fn(() => mockPromise);
-    await pullTimeline('user').catch((res) => expect(res).toEqual(`An error has occurred. Please contact system administrator.`));
+    await pullTimeline(endpoint).catch((res) => expect(res).toEqual(`An error has occurred. Please contact system administrator.`));
     });
 
 });

@@ -7,7 +7,7 @@ describe('Profile component', () => {
 	const url = 'bar';
 	const user = 'user';
 	const handle = 'handle';
-	const wrapper = shallow(<Profile profileImageUrl={url} userName={user} handle={handle} type={'home'}/>);
+	const wrapper = shallow(<Profile profileImageUrl={url} userName={user} handle={handle} displayHandle={true}/>);
 	wrapper.setProps({ profileImageUrl: url, userName: user, handle: handle });
 	expect(wrapper.find('div.profile').length).toEqual(1);
 	expect(wrapper.find('div.name').text()).toEqual(user);
@@ -19,7 +19,7 @@ describe('Profile component', () => {
 	const url = 'bar';
 	const user = 'user';
 	const handle = 'handle';
-	const wrapper = shallow(<Profile profileImageUrl={url} userName={user} handle={handle} type={'user'}/>);
+	const wrapper = shallow(<Profile profileImageUrl={url} userName={user} handle={handle} displayHandle={false}/>);
 	wrapper.setProps({ profileImageUrl: url, userName: user, handle: handle });
 	expect(wrapper.find('div.profile').length).toEqual(1);
 	expect(wrapper.find('div.name').text()).toEqual(user);
