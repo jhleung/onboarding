@@ -1,10 +1,34 @@
 import React from 'react';
 
-export default class Error extends React.Component {
+const renderError = (props) => {
+    const obj = props.rawTimeline;
+    return(
+       <div className="error">{props.errorMsg}</div>
+    );
+}
+
+export class HomeTimelineError extends React.Component {
     constructor(props) {
 	super(props);
     }
+
     render() {
-	return(<div className="error">{this.props.errorMsg}</div>);
+    const error = renderError(this.props);
+	return(
+	    <div className="homeTimelineError">{error}</div>
+	);
+    }
+}
+
+export class UserTimelineError extends React.Component {
+    constructor(props) {
+	super(props);
+    }
+
+    render() {
+    const error = renderError(this.props);
+	return(
+	    <div className="userTimelineError">{error}</div>
+	);
     }
 }

@@ -14,12 +14,25 @@ $message-text-color: black;
     border-bottom: $border-bottom;
 }
 
-%home-timeline-container-shared {
+@mixin outer-container($position, $percentage) {
+    float: $position;
+    width: $percentage;
+}
+
+%home-timeline-outer-container {
+    @include outer-container(left, 55%);
+}
+
+%user-timeline-outer-container {
+    @include outer-container(right, 45%);
+}
+
+%home-timeline-inner-container {
     border: 1px solid;
     margin: 10px 10px 40px 25px;
 }
 
-%user-timeline-container-shared {
+%user-timeline-inner-container {
     border: 1px solid;
     margin: 10px 25px 40px 10px;
 }
@@ -50,10 +63,26 @@ $message-text-color: black;
     @extend %margin-shared;
 }
 
-.homeTimeline {
-    float: left;
-    width: 55%;
 
+.homeTimelineError {
+    @extend %home-timeline-outer-container;
+    .error {
+	@extend %home-timeline-inner-container;
+	padding: 10px;
+    }
+}
+
+.userTimelineError {
+    @extend %user-timeline-outer-container;
+    .error{
+	@extend %user-timeline-inner-container;
+	padding: 10px;
+    }
+}
+
+
+.homeTimeline {
+    @extend %home-timeline-outer-container;
     #pullHomeTimeline {
 	padding: 5px;
 	border-radius: 10px;
@@ -66,13 +95,9 @@ $message-text-color: black;
 	@extend %title-style;
     }
 
-    .error {
-	@extend %home-timeline-container-shared;
-	padding: 10px;
-    }
 
     #timeline-inner {
-	@extend %home-timeline-container-shared;
+	@extend %home-timeline-inner-container;
 
 	.tweet-style-one-last-tweet {
 	    @include tweet-style($home-timeline-color-one, 0px);
@@ -97,9 +122,7 @@ $message-text-color: black;
 }
 
 .userTimeline {
-    float:right;
-    width: 45%;
-
+    @extend %user-timeline-outer-container;
     #pullUserTimeline {
 	padding: 5px;
 	border-radius: 10px;
@@ -112,13 +135,8 @@ $message-text-color: black;
 	@extend %title-style;
     }
 
-    .error {
-	@extend %user-timeline-container-shared;
-	padding: 10px;
-    }
-
     #timeline-inner {
-	@extend %user-timeline-container-shared;
+	@extend %user-timeline-inner-container;
 
 	.tweet-style-one-last-tweet {
 	    @include tweet-style($user-timeline-color-one, 0px);
