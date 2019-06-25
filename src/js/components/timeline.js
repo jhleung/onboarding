@@ -1,8 +1,10 @@
 import React from 'react';
 import Tweet from './tweet.js';
+import Error from './error.js';
+import {pullHomeTimeline, pullUserTimeline} from '../services/pullTimeline.js';
 
-const renderTimeline = (props, displayHandle) => {
-    const obj = props.rawTimeline;
+const renderTimeline = (timeline, displayHandle) => {
+    const obj = timeline;
     let tweets = [];
     obj.forEach((tweet, i) => {
     let className = i % 2 == 0 ? "tweet-style-one" : "tweet-style-two";
@@ -20,14 +22,34 @@ const renderTimeline = (props, displayHandle) => {
 export class HomeTimeline extends React.Component {
     constructor(props) {
 	super(props);
+     this.state = {
+        timeline: null,
+        errorMsg: ''
+    };
     }
 
+    componentWillMount() {
+    this.updateHomeTimeline();
+    }
+
+    updateHomeTimeline() {
+    pullHomeTimeline().then((responseText) => {
+        this.state.timeline = responseText;
+        this.state.errorMsg = null;
+        this.setState(this.state);
+    }).catch((error) => {
+        console.log(error);
+        this.state.errorMsg = error;
+        this.setState(this.state);
+    });
+    };
+
     render() {
-	const timeline = renderTimeline(this.props, true);
+	const timeline = this.state.errorMsg != null ? <Error errorMsg={this.state.errorMsg} /> : renderTimeline(this.state.timeline, true);
 	return(
 	    <div className="homeTimeline">
 		<div className="homeTimelineHeader">
-		    <button type="button" id="pullHomeTimeline" onClick={() => this.props.updateTimeline()}>Pull Home Timeline</button>
+		    <button type="button" id="pullHomeTimeline" onClick={() => this.updateHomeTimeline()}>Pull Home Timeline</button>
 		    <div className="homeTimelineTitle">Home Timeline</div>
 		</div>
 		{timeline}
@@ -40,14 +62,40 @@ export class HomeTimeline extends React.Component {
 export class UserTimeline extends React.Component {
     constructor(props) {
 	super(props);
+
+    this.state = {
+        timeline: null,
+        errorMsg: '',
+    };
     }
 
+    componentWillMount() {
+    this.updateUserTimeline();
+    }
+
+
+    updateUserTimeline() {
+    pullUserTimeline().then((responseText) => {
+        if (responseText.length == 0) {
+        this.state.errorMsg = 'No tweets are available, post a tweet!';
+        } else {
+        this.state.timeline = responseText;
+        this.state.errorMsg = null;
+        }
+        this.setState(this.state);
+    }).catch((error) => {
+        console.log(error);
+        this.state.errorMsg = error;
+        this.setState(this.state);
+    });
+    };
+
     render() {
-	const timeline = renderTimeline(this.props, false);
+	const timeline = this.state.errorMsg != null ? <Error errorMsg={this.state.errorMsg} /> : renderTimeline(this.state.timeline, false);
 	return(
 	    <div className="userTimeline">
 		<div className="userTimelineHeader">
-		    <button type="button" id="pullUserTimeline" onClick={() => this.props.updateTimeline()}>Pull User Timeline</button>
+		    <button type="button" id="pullUserTimeline" onClick={() => this.updateUserTimeline()}>Pull User Timeline</button>
 		    <div className="userTimelineTitle">User Timeline</div>
 		</div>
 		{timeline}

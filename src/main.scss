@@ -19,14 +19,6 @@ $message-text-color: black;
     width: $percentage;
 }
 
-%home-timeline-outer-container {
-    @include outer-container(left, 55%);
-}
-
-%user-timeline-outer-container {
-    @include outer-container(right, 45%);
-}
-
 %home-timeline-inner-container {
     border: 1px solid;
     margin: 10px 10px 40px 25px;
@@ -64,37 +56,32 @@ $message-text-color: black;
 }
 
 
-.homeTimelineError {
-    @extend %home-timeline-outer-container;
-    .error {
-	@extend %home-timeline-inner-container;
-	padding: 10px;
-    }
+#pullHomeTimeline {
+    padding: 5px;
+    border-radius: 10px;
+    margin-left: 30px;
+    position: absolute;
+    left: 0;
 }
 
-.userTimelineError {
-    @extend %user-timeline-outer-container;
-    .error{
-	@extend %user-timeline-inner-container;
-	padding: 10px;
-    }
+#pullUserTimeline {
+    padding: 5px;
+    border-radius: 10px;
+    margin-right: 30px;
+    position: absolute;
+    right: 0;
 }
-
 
 .homeTimeline {
-    @extend %home-timeline-outer-container;
-    #pullHomeTimeline {
-	padding: 5px;
-	border-radius: 10px;
-	margin-left: 30px;
-	position: absolute;
-	left: 0;
-    }
+    @include outer-container(left, 55%);
 
     .homeTimelineTitle {
 	@extend %title-style;
     }
-
+    .error {
+	@extend %home-timeline-inner-container;
+	padding: 10px;
+    }
 
     #timeline-inner {
 	@extend %home-timeline-inner-container;
@@ -122,19 +109,16 @@ $message-text-color: black;
 }
 
 .userTimeline {
-    @extend %user-timeline-outer-container;
-    #pullUserTimeline {
-	padding: 5px;
-	border-radius: 10px;
-	margin-right: 30px;
-	position: absolute;
-	right: 0;
-    }
+    @include outer-container(right, 45%);
 
     .userTimelineTitle {
 	@extend %title-style;
     }
 
+    .error{
+	@extend %user-timeline-inner-container;
+	padding: 10px;
+    }
     #timeline-inner {
 	@extend %user-timeline-inner-container;
 
