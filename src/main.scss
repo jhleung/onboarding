@@ -21,16 +21,17 @@ $message-text-color: black;
 
 %home-timeline-inner-container {
     border: 1px solid;
-    margin: 10px 10px 40px 25px;
+    margin: 54px 10px 40px 25px;
 }
 
 %user-timeline-inner-container {
     border: 1px solid;
-    margin: 10px 25px 40px 10px;
+    margin: 54px 25px 40px 10px;
 }
 
 %title-style {
     text-align: center;
+    font-size: 20px;
     font-weight: bold;
 }
 
@@ -43,7 +44,8 @@ $message-text-color: black;
 }
 
 #title {
-    @extend %title-style;
+    text-align: center;
+    font-weight: bold;
     font-size: 40pt;
 }
 
@@ -60,6 +62,7 @@ $message-text-color: black;
     padding: 5px;
     border-radius: 10px;
     margin-left: 30px;
+    margin-top: 34px;
     position: absolute;
     left: 0;
 }
@@ -68,6 +71,7 @@ $message-text-color: black;
     padding: 5px;
     border-radius: 10px;
     margin-right: 30px;
+    margin-top: 34px;
     position: absolute;
     right: 0;
 }
@@ -113,7 +117,7 @@ $message-text-color: black;
 
     .userTimelineTitle {
 	@extend %title-style;
-    }
+  }
 
     .error{
 	@extend %user-timeline-inner-container;

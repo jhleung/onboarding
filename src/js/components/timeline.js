@@ -49,7 +49,9 @@ export class HomeTimeline extends React.Component {
 	return(
 	    <div className="homeTimeline">
 		<div className="homeTimelineHeader">
-		    <button type="button" id="pullHomeTimeline" onClick={() => this.updateHomeTimeline()}>Pull Home Timeline</button>
+		    <div id="pullHomeTimeline">
+                <button type="button" onClick={() => this.updateHomeTimeline()}>Pull Home Timeline</button>
+            </div>
 		    <div className="homeTimelineTitle">Home Timeline</div>
 		</div>
 		{timeline}
@@ -95,8 +97,10 @@ export class UserTimeline extends React.Component {
 	return(
 	    <div className="userTimeline">
 		<div className="userTimelineHeader">
-		    <button type="button" id="pullUserTimeline" onClick={() => this.updateUserTimeline()}>Pull User Timeline</button>
-		    <div className="userTimelineTitle">User Timeline</div>
+            <div id="pullUserTimeline">
+		      <button type="button" onClick={() => this.updateUserTimeline()}>Pull User Timeline</button>
+		  </div>
+            <div className="userTimelineTitle">User Timeline</div>
 		</div>
 		{timeline}
 	    </div>

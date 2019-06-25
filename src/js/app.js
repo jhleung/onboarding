@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import '../main.scss';
-import './components/helloReact.js';
 import {HomeTimeline, UserTimeline} from './components/timeline.js';
 
 export default class App extends React.Component {
