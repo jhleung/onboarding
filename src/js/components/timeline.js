@@ -22,10 +22,10 @@ const renderTimeline = (timeline, displayHandle) => {
 export class HomeTimeline extends React.Component {
     constructor(props) {
 	super(props);
-     this.state = {
-        timeline: null,
-        errorMsg: ''
-    };
+	this.state = {
+	    timeline: null,
+	    errorMsg: ''
+	};
     }
 
     componentWillMount() {
@@ -33,15 +33,15 @@ export class HomeTimeline extends React.Component {
     }
 
     updateHomeTimeline() {
-    pullHomeTimeline().then((responseText) => {
-        this.state.timeline = responseText;
-        this.state.errorMsg = null;
-        this.setState(this.state);
-    }).catch((error) => {
-        console.log(error);
-        this.state.errorMsg = error;
-        this.setState(this.state);
-    });
+	pullHomeTimeline().then((responseText) => {
+	    this.state.timeline = responseText;
+	    this.state.errorMsg = null;
+	    this.setState(this.state);
+	}).catch((error) => {
+	    console.log(error);
+	    this.state.errorMsg = error;
+	    this.setState(this.state);
+	});
     };
 
     render() {
@@ -50,8 +50,8 @@ export class HomeTimeline extends React.Component {
 	    <div className="homeTimeline">
 		<div className="homeTimelineHeader">
 		    <div id="pullHomeTimeline">
-                <button type="button" onClick={() => this.updateHomeTimeline()}>Pull Home Timeline</button>
-            </div>
+			<button type="button" onClick={() => this.updateHomeTimeline()}>Pull Home Timeline</button>
+		    </div>
 		    <div className="homeTimelineTitle">Home Timeline</div>
 		</div>
 		{timeline}
@@ -65,31 +65,31 @@ export class UserTimeline extends React.Component {
     constructor(props) {
 	super(props);
 
-    this.state = {
-        timeline: null,
-        errorMsg: '',
-    };
+	this.state = {
+	    timeline: null,
+	    errorMsg: '',
+	};
     }
 
     componentWillMount() {
-    this.updateUserTimeline();
+	this.updateUserTimeline();
     }
 
 
     updateUserTimeline() {
-    pullUserTimeline().then((responseText) => {
-        if (responseText.length == 0) {
-        this.state.errorMsg = 'No tweets are available, post a tweet!';
-        } else {
-        this.state.timeline = responseText;
-        this.state.errorMsg = null;
-        }
-        this.setState(this.state);
-    }).catch((error) => {
-        console.log(error);
-        this.state.errorMsg = error;
-        this.setState(this.state);
-    });
+	pullUserTimeline().then((responseText) => {
+	    if (responseText.length == 0) {
+		this.state.errorMsg = 'No tweets are available, post a tweet!';
+	    } else {
+		this.state.timeline = responseText;
+		this.state.errorMsg = null;
+	    }
+	    this.setState(this.state);
+	}).catch((error) => {
+	    console.log(error);
+	    this.state.errorMsg = error;
+	    this.setState(this.state);
+	});
     };
 
     render() {
@@ -97,10 +97,10 @@ export class UserTimeline extends React.Component {
 	return(
 	    <div className="userTimeline">
 		<div className="userTimelineHeader">
-            <div id="pullUserTimeline">
-		      <button type="button" onClick={() => this.updateUserTimeline()}>Pull User Timeline</button>
-		  </div>
-            <div className="userTimelineTitle">User Timeline</div>
+		    <div id="pullUserTimeline">
+			<button type="button" onClick={() => this.updateUserTimeline()}>Pull User Timeline</button>
+		    </div>
+		    <div className="userTimelineTitle">User Timeline</div>
 		</div>
 		{timeline}
 	    </div>

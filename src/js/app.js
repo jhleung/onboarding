@@ -7,11 +7,11 @@ export default class App extends React.Component {
     render() {
     return(
         <div className="app">
-        <div id="timeline">
-            <HomeTimeline />
-            <UserTimeline />
-         </div>
-        </div>
+	    <div id="timeline">
+		<HomeTimeline />
+		<UserTimeline />
+	     </div>
+	</div>
     );
     }
 }
