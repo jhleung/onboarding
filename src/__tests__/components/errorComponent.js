@@ -8,4 +8,4 @@ describe('Error component', () => {
 	const wrapper = shallow(<Error errorMsg={errorMsg} />);
 	expect(wrapper.find('div.error').text()).toEqual(errorMsg);
     });
-});
+})
