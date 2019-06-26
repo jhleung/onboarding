@@ -3,8 +3,8 @@ import {shallow} from 'enzyme';
 import {HomeTimeline, UserTimeline} from '../../js/components/timeline.js';
 
 describe('HomeTimeline component', () => {
-    HomeTimeline.prototype.updateHomeTimeline = jest.fn();
-    UserTimeline.prototype.updateUserTimeline = jest.fn();
+    HomeTimeline.prototype.pullTimeline = jest.fn();
+    UserTimeline.prototype.pullTimeline = jest.fn();
 
     it('should render home timeline component', () => {
 	const wrapper = shallow(<HomeTimeline/>);

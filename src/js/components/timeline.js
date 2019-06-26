@@ -1,7 +1,7 @@
 import React from 'react';
 import Tweet from './tweet.js';
 import Error from './error.js';
-import {pullHomeTimeline, pullUserTimeline} from '../services/pullTimeline.js';
+import {pullHomeTimeline, pullUserTimeline, filterHomeTimeline} from '../services/pullTimeline.js';
 
 const renderTimeline = (timeline, displayHandle) => {
     const obj = timeline;
@@ -24,15 +24,34 @@ export class HomeTimeline extends React.Component {
 	super(props);
 	this.state = {
 	    timeline: null,
-	    errorMsg: ''
+	    errorMsg: '',
+	    disableFilterButton: true
 	};
+        this.handleKeyDown = this.handleKeyDown.bind(this);
+
     }
 
     componentWillMount() {
-    this.updateHomeTimeline();
+	this.pullTimeline();
+	document.addEventListener("keydown", this.handleKeyDown);
     }
 
-    updateHomeTimeline() {
+    componentWillUnMount(){
+	document.removeEventListener("keydown", this.handleKeyDown);
+    }
+
+    handleKeyDown(e) {
+    	if (e.keyCode == 13) {
+    	   this.filterTimeline();
+    	}
+    }
+
+    disableFilterButton(e) {
+        this.state.disableFilterButton = e.target.value == '';
+        this.setState(this.state);
+    }
+
+    pullTimeline() {
 	pullHomeTimeline().then((responseText) => {
 	    this.state.timeline = responseText;
 	    this.state.errorMsg = null;
@@ -42,7 +61,19 @@ export class HomeTimeline extends React.Component {
 	    this.state.errorMsg = error;
 	    this.setState(this.state);
 	});
-    };
+    }
+    
+    filterTimeline() {
+	const keyword =  document.querySelector('.filter-keyword').value;
+	filterHomeTimeline(keyword).then((responseText) => {
+	    this.state.timeline = responseText;
+	    this.state.errorMsg = null;
+	    this.setState(this.state);
+	}).catch((error) => {
+	    this.state.errorMsg = error;
+	    this.setState(this.state);
+	});
+    }
 
     render() {
 	const timeline = this.state.errorMsg != null ? <Error errorMsg={this.state.errorMsg} /> : renderTimeline(this.state.timeline, true);
@@ -50,7 +81,10 @@ export class HomeTimeline extends React.Component {
 	    <div className="homeTimeline">
 		<div className="homeTimelineHeader">
 		    <div id="pullHomeTimeline">
-			<button type="button" onClick={() => this.updateHomeTimeline()}>Pull Home Timeline</button>
+			<button type="button" onClick={() => this.pullTimeline()}>Pull Home Timeline</button>
+		    </div>
+		    <div className="filterHomeTimeline">
+			<input className="filter-keyword" onChange={(e) => this.disableFilterButton(e)}/><button onClick={() => this.filterTimeline()} disabled={this.state.disableFilterButton}>Filter</button>
 		    </div>
 		    <div className="homeTimelineTitle">Home Timeline</div>
 		</div>
@@ -59,7 +93,6 @@ export class HomeTimeline extends React.Component {
 	);
     }
 }
-
 
 export class UserTimeline extends React.Component {
     constructor(props) {
@@ -72,11 +105,10 @@ export class UserTimeline extends React.Component {
     }
 
     componentWillMount() {
-	this.updateUserTimeline();
+	this.pullTimeline();
     }
 
-
-    updateUserTimeline() {
+    pullTimeline() {
 	pullUserTimeline().then((responseText) => {
 	    if (responseText.length == 0) {
 		this.state.errorMsg = 'No tweets are available, post a tweet!';
@@ -98,7 +130,7 @@ export class UserTimeline extends React.Component {
 	    <div className="userTimeline">
 		<div className="userTimelineHeader">
 		    <div id="pullUserTimeline">
-			<button type="button" onClick={() => this.updateUserTimeline()}>Pull User Timeline</button>
+			<button type="button" onClick={() => this.pullTimeline()}>Pull User Timeline</button>
 		    </div>
 		    <div className="userTimelineTitle">User Timeline</div>
 		</div>
