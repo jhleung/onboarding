@@ -25,7 +25,7 @@ export class HomeTimeline extends React.Component {
 	this.state = {
 	    timeline: null,
 	    errorMsg: '',
-	    disableFilterButton: true
+	    disableFilter: true
 	};
         this.handleKeyDown = this.handleKeyDown.bind(this);
 
@@ -41,13 +41,13 @@ export class HomeTimeline extends React.Component {
     }
 
     handleKeyDown(e) {
-    	if (e.keyCode == 13) {
+    	if (!this.state.disableFilter && e.keyCode == 13) {
     	   this.filterTimeline();
     	}
     }
 
-    disableFilterButton(e) {
-        this.state.disableFilterButton = e.target.value == '';
+    disableFilter(e) {
+        this.state.disableFilter = e.target.value == '';
         this.setState(this.state);
     }
 
@@ -84,7 +84,7 @@ export class HomeTimeline extends React.Component {
 			<button type="button" onClick={() => this.pullTimeline()}>Pull Home Timeline</button>
 		    </div>
 		    <div className="filterHomeTimeline">
-			<input className="filter-keyword" onChange={(e) => this.disableFilterButton(e)}/><button onClick={() => this.filterTimeline()} disabled={this.state.disableFilterButton}>Filter</button>
+			<input className="filter-keyword" onChange={(e) => this.disableFilter(e)}/><button onClick={() => this.filterTimeline()} disabled={this.state.disableFilter}>Filter</button>
 		    </div>
 		    <div className="homeTimelineTitle">Home Timeline</div>
 		</div>

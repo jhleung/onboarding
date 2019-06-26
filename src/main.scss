@@ -36,6 +36,7 @@ $message-text-color: black;
 }
 
 %button-wrapper-div {
+	position: absolute;
     padding: 5px;
     border-radius: 10px;
     margin-top: 34px;
@@ -56,11 +57,10 @@ body {
 #timeline {
     .homeTimeline {
 	@include outer-container(left, 55%);
-
+	position: fixed;
 	.homeTimelineHeader {
 	    #pullHomeTimeline {
 		@extend %button-wrapper-div;
-		position: absolute;
 		margin-left: 30px;
 		left: 0;
 
@@ -68,9 +68,8 @@ body {
 
 	    .filterHomeTimeline {
 		@extend %button-wrapper-div;
-
+		right: 0;
 		margin-right: 5px;
-		float: right;
 		.filter-keyword {
 		    border-radius: 5px;
 

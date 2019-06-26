@@ -4,7 +4,7 @@ export const pullTimeline = (endpoint) => {
 	    if (res.status == 200) {
 		resolve(res.json());
 	    } else {
-		reject(`Pull timeline failed.`);
+		reject('Pull timeline failed.');
 	    }
 	}).catch((err) => {
 	    reject('An error has occurred. Please contact system administrator.');
@@ -34,7 +34,7 @@ export const filterTimeline = (endpoint) => {
 		    }
 		});
 	    } else {
-		reject(`Pull timeline failed.`);
+		reject('Filter timeline failed.');
 	    }
 	}).catch((err) => {
 	    reject('An error has occurred. Please contact system administrator.');
