@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Tweet from './tweet.js';
 import Error from './error.js';
 import {pullHomeTimeline, pullUserTimeline, filterHomeTimeline} from '../services/pullTimeline.js';
@@ -64,7 +65,7 @@ export class HomeTimeline extends React.Component {
     }
     
     filterTimeline() {
-	const keyword =  document.querySelector('.filter-keyword').value;
+	const keyword = ReactDOM.findDOMNode(this).getElementsByClassName('filter-keyword')[0].value;
 	filterHomeTimeline(keyword).then((responseText) => {
 	    this.state.timeline = responseText;
 	    this.state.errorMsg = null;
