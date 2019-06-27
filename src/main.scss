@@ -36,7 +36,7 @@ $message-text-color: black;
 }
 
 %button-wrapper-div {
-	position: absolute;
+    position: absolute;
     padding: 5px;
     border-radius: 10px;
     margin-top: 34px;
@@ -57,22 +57,20 @@ body {
 #timeline {
     .homeTimeline {
 	@include outer-container(left, 55%);
-	position: fixed;
+	position: absolute;
 	.homeTimelineHeader {
 	    #pullHomeTimeline {
 		@extend %button-wrapper-div;
 		margin-left: 30px;
 		left: 0;
-
 	    }
 
 	    .filterHomeTimeline {
 		@extend %button-wrapper-div;
-		right: 0;
 		margin-right: 5px;
+		right: 0;
 		.filter-keyword {
-		    border-radius: 5px;
-
+		    border: 1px solid black;
 		    margin-right: 5px;
 		}
 	    }
@@ -118,7 +116,6 @@ body {
 	.userTimelineHeader {
 	    #pullUserTimeline {
 		@extend %button-wrapper-div;
-		position: absolute;
 		margin-right: 30px;
 		right: 0;
 	    }
@@ -132,6 +129,7 @@ body {
 	    @extend %user-timeline-inner-container;
 	    padding: 10px;
 	}
+
 	#timeline-inner {
 	    @extend %user-timeline-inner-container;
 
