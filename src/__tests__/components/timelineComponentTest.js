@@ -4,6 +4,7 @@ import {HomeTimeline, UserTimeline} from '../../js/components/timeline.js';
 
 describe('HomeTimeline component', () => {
     HomeTimeline.prototype.pullTimeline = jest.fn();
+    HomeTimeline.prototype.filterTimeline = jest.fn();
     UserTimeline.prototype.pullTimeline = jest.fn();
 
     it('should render home timeline component', () => {
@@ -13,7 +14,9 @@ describe('HomeTimeline component', () => {
 	expect(wrapper.find('div.homeTimeline').length).toEqual(1);
 	expect(wrapper.find('div.homeTimelineHeader').length).toEqual(1);
 	expect(wrapper.find('div#pullHomeTimeline').length).toEqual(1);
-	expect(wrapper.find('button').length).toEqual(1);
+	expect(wrapper.find('div.filterHomeTimeline').length).toEqual(1);
+	expect(wrapper.find('input.filter-keyword').length).toEqual(1);
+	expect(wrapper.find('button').length).toEqual(2);
 	expect(wrapper.find('Tweet.tweet-style-one').length).toEqual(1);
 	expect(wrapper.find('Tweet.tweet-style-two').length).toEqual(1);
 	expect(wrapper.find('Tweet.tweet-style-one-last-tweet').length).toEqual(1);
