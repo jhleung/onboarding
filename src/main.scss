@@ -202,4 +202,7 @@ body {
 	}
     }
 
+    &::after {
+	clear: both;
+    }
 }
