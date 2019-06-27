@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Tweet from './tweet.js';
 import Error from './error.js';
-import {pullHomeTimeline, pullUserTimeline, filterHomeTimeline} from '../services/pullTimeline.js';
+import {pullHomeTimeline, pullUserTimeline, filterHomeTimeline} from '../services/service.js';
 
 const renderTimeline = (timeline, displayHandle) => {
     const obj = timeline;
@@ -26,10 +26,10 @@ export class HomeTimeline extends React.Component {
 	this.state = {
 	    timeline: null,
 	    errorMsg: '',
+	    filterKeyword: '',
 	    disableFilter: true
 	};
         this.handleKeyDown = this.handleKeyDown.bind(this);
-
     }
 
     componentWillMount() {
@@ -47,10 +47,13 @@ export class HomeTimeline extends React.Component {
     	}
     }
 
-    disableFilter(e) {
-        this.state.disableFilter = e.target.value == '';
+    handleOnChange(e) {
+    	const value = e.target.value;
+    	this.state.filterKeyword = value;
+        this.state.disableFilter = value == '';
         this.setState(this.state);
-    }
+   
+   }
 
     pullTimeline() {
 	pullHomeTimeline().then((responseText) => {
@@ -65,7 +68,7 @@ export class HomeTimeline extends React.Component {
     }
     
     filterTimeline() {
-	const keyword = ReactDOM.findDOMNode(this).getElementsByClassName('filter-keyword')[0].value;
+	const keyword = this.state.filterKeyword;
 	filterHomeTimeline(keyword).then((responseText) => {
 	    this.state.timeline = responseText;
 	    this.state.errorMsg = null;
@@ -85,7 +88,7 @@ export class HomeTimeline extends React.Component {
 			<button type="button" onClick={() => this.pullTimeline()}>Pull Home Timeline</button>
 		    </div>
 		    <div className="filterHomeTimeline">
-			<input className="filter-keyword" onChange={(e) => this.disableFilter(e)}/><button onClick={() => this.filterTimeline()} disabled={this.state.disableFilter}>Filter</button>
+			<input className="filter-keyword" onChange={(e) => this.handleOnChange(e)}/><button onClick={() => this.filterTimeline()} disabled={this.state.disableFilter}>Filter</button>
 		    </div>
 		    <div className="homeTimelineTitle">Home Timeline</div>
 		</div>

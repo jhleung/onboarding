@@ -1,4 +1,4 @@
-import {fetchTimeline} from '../../js/services/pullTimeline.js';   
+import {fetchTimeline} from '../../js/services/service.js';   
 
 const createMockPromiseResolved = (status)=> {
     const response = jest.fn();
