@@ -21,12 +21,12 @@ $message-text-color: black;
 
 %home-timeline-inner-container {
 	border: 1px solid;
-	margin: 39px 10px 40px 25px;
+	margin: 44px 10px 40px 25px;
 }
 
 %user-timeline-inner-container {
 	border: 1px solid;
-	margin: 39px 25px 40px 10px;
+	margin: 44px 25px 40px 10px;
 }
 
 %title-style {
@@ -64,7 +64,7 @@ body {
 		.homeTimelineHeader {
 			#pullHomeTimeline {
 				@extend %button-wrapper-div;
-				margin-left: 30px;
+				margin-left: 25px;
 				left: 0;
 
 				.pullHomeTimelineButton {
@@ -73,10 +73,10 @@ body {
 			}
 
 			.filterHomeTimeline {
-				@extend %button-wrapper-div;
-				margin-right: 5px;
+				position: absolute;
+				margin-top: 42px;
+				margin-right: 10px;
 				right: 0;
-
 
 				.filter-keyword {
 					border: 1px solid black;
