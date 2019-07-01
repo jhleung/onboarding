@@ -84,7 +84,7 @@ export class HomeTimeline extends React.Component {
 						<button className="pullHomeTimelineButton" type="button" onClick={() => this.pullTimeline()}>Pull Home Timeline</button>
 					</div>
 					<div className="filterHomeTimeline">
-						<input className="filter-keyword" onChange={(e) => this.handleOnChange(e)}/><button className="filterHomeTimelineButton" onClick={() => this.filterTimeline()} disabled={this.state.disableFilter}>Filter</button>
+						<input className="filter-keyword" onChange={(e) => this.handleOnChange(e)}/><button className="filterHomeTimelineButton" onClick={() => this.filterTimeline()} disabled={this.state.filterKeyword.length == 0}>Filter</button>
 					</div>
 					<div className="homeTimelineTitle">Home Timeline</div>
 				</div>
