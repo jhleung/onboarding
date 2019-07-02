@@ -14,21 +14,6 @@ $message-text-color: black;
 	border-bottom: $border-bottom;
 }
 
-@mixin outer-container($position, $percentage) {
-	float: $position;
-	width: $percentage;
-}
-
-%home-timeline-inner-container {
-	border: 1px solid;
-	margin: 0px 10px 40px 25px;
-}
-
-%user-timeline-inner-container {
-	border: 1px solid;
-	margin: 0px 25px 40px 10px;
-}
-
 %title-style {
 	text-align: center;
 	font-size: 25px;
@@ -57,12 +42,34 @@ body {
 	}
 }
 
-#timeline {
+.post-tweet {
+	.post-tweet-input {
+
+		.tweet-message {
+		    text-align: left;
+		    font-size: 15px;
+			height: 250px;
+			width: 500px;
+		}
+	}
+
+	.post-tweet-footer {
+
+		>.post-tweet-status {
+			display: inline-block;
+		}
+
+		.post-tweet-button-wrapper {
+			display: inline-block;
+		}
+	}
+}
+
+.timeline {
 	.homeTimeline {
-		@include outer-container(left, 55%);
 		position: absolute;
 		.homeTimelineHeader {
-			margin-bottom: 29px;
+			margin-bottom: 55px;
 			#pullHomeTimeline {
 				@extend %button-wrapper-div;
 				margin-left: 25px;
@@ -89,15 +96,7 @@ body {
 			}
 		}
 
-
-		.error {
-			@extend %home-timeline-inner-container;
-			padding: 10px;
-		}
-
 		#timeline-inner {
-			@extend %home-timeline-inner-container;
-
 			.tweet-style-one-last-tweet {
 				@include tweet-style($home-timeline-color-one, 0px);
 			}
@@ -113,40 +112,26 @@ body {
 			.tweet-style-two {
 				@include tweet-style($home-timeline-color-two, 1px solid lightgrey);
 			}
-
-			.message {
-				width: 33vw;
-			}
 		}
 	}
 
 	.userTimeline {
-		@include outer-container(right, 45%);
+		position: absolute;
 
 		.userTimelineHeader {
-			margin-bottom: 29px;
+			margin-bottom: 55px;
 			#pullUserTimeline {
 				@extend %button-wrapper-div;
-				margin-right: 30px;
-				right: 0;
+				margin-left: 25px;
+				left: 0;
+
 				.pullUserTimelineButton {
 					@extend %button-style;
 				}
 			}
-
-			.userTimelineTitle {
-				@extend %title-style;
-			}
-		}
-
-		.error{
-			@extend %user-timeline-inner-container;
-			padding: 10px;
 		}
 
 		#timeline-inner {
-			@extend %user-timeline-inner-container;
-
 			.tweet-style-one-last-tweet {
 				@include tweet-style($user-timeline-color-one, 0px);
 			}
@@ -162,15 +147,34 @@ body {
 			.tweet-style-two {
 				@include tweet-style($user-timeline-color-two, 1px solid lightgrey);
 			}
-
-			.message {
-				width: 24vw;
-			}
 		}
 	}
 
+	.error {
+		margin: 0px 10px 40px 25px;
+		padding: 10px;
+	}
 
 	#timeline-inner {
+		border: 1px solid;
+		margin: 0px 10px 40px 25px;
+
+		.tweet-style-one-last-tweet {
+			@include tweet-style($user-timeline-color-one, 0px);
+		}
+
+		.tweet-style-two-last-tweet {
+			@include tweet-style($user-timeline-color-two, 0px);
+		}
+
+		.tweet-style-one {
+			@include tweet-style($user-timeline-color-one, 1px solid lightgrey);
+		}
+
+		.tweet-style-two {
+			@include tweet-style($user-timeline-color-two, 1px solid lightgrey);
+		}
+
 		.profile {
 			display: inline-block;
 			@include dimensions(175px, 110px);
@@ -198,6 +202,7 @@ body {
 		}
 
 		.message {
+			width: 80vw;
 			display: inline-block;
 			vertical-align: middle;
 
@@ -215,6 +220,7 @@ body {
 			}
 		}
 	}
+
 
 	&::after {
 		clear: both;
