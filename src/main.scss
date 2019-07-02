@@ -46,7 +46,7 @@ body {
 }
 
 .tab-wrapper {
-	.timeline-tab-nav {
+	.tab-nav {
 		padding-bottom: 5px;
 		border-bottom: 2px solid gainsboro; 
 
@@ -119,9 +119,10 @@ body {
 }
 
 .timeline {
+	overflow: auto;
 	.homeTimeline {
 		position: absolute;
-		
+
 		.timelineHeader {
 			.filterHomeTimeline {
 				position: absolute;

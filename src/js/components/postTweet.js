@@ -1,7 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Tweet from './tweet.js';
-import Error from './error.js';
 import {publishTweet} from '../services/service.js';
 
 export default class PostTweet extends React.Component {

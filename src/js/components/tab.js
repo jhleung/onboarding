@@ -23,7 +23,7 @@ export default class Tab extends React.Component {
 
 		return (
 			<div className="tab-wrapper">
-				<nav className="timeline-tab-nav">
+				<nav className="tab-nav">
 					<a className={this.state.activeTabIndex == 0 ? `tab-0 ${activeTabClassName}` : "tab-0"} 
 						onClick={() => this.setActiveTabIndex(0)}>Home Timeline</a>	
 					<a className={this.state.activeTabIndex == 1 ? `tab-1 ${activeTabClassName}` : "tab-1"} 
