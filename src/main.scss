@@ -25,16 +25,6 @@ $message-text-color: black;
 	font-weight: bold;
 }
 
-%button-wrapper-div {
-	position: absolute;
-	margin-top: 19px;
-}
-
-%button-style {
-	padding: 5px;
-	border-radius: 10px;
-}
-
 %tab {
 	cursor: default;
 	padding: 5px;
@@ -131,18 +121,8 @@ body {
 .timeline {
 	.homeTimeline {
 		position: absolute;
-		.homeTimelineHeader {
-			margin-bottom: 55px;
-			#pullHomeTimeline {
-				@extend %button-wrapper-div;
-				margin-left: 70px;
-				left: 0;
-
-				.pullHomeTimelineButton {
-					@extend %button-style;
-				}
-			}
-
+		
+		.timelineHeader {
 			.filterHomeTimeline {
 				position: absolute;
 				margin-right: 70px;
@@ -153,9 +133,6 @@ body {
 					border: 1px solid black;
 					margin-right: 5px;
 				}
-			}
-			.homeTimelineTitle {
-				@extend %title-style;
 			}
 		}
 
@@ -181,19 +158,6 @@ body {
 	.userTimeline {
 		position: absolute;
 
-		.userTimelineHeader {
-			margin-bottom: 55px;
-			#pullUserTimeline {
-				@extend %button-wrapper-div;
-				margin-left: 70px;
-				left: 0;
-
-				.pullUserTimelineButton {
-					@extend %button-style;
-				}
-			}
-		}
-
 		#timeline-inner {
 			.tweet-style-one-last-tweet {
 				@include tweet-style($user-timeline-color-one, 0px);
@@ -209,6 +173,21 @@ body {
 
 			.tweet-style-two {
 				@include tweet-style($user-timeline-color-two, 1px solid lightgrey);
+			}
+		}
+	}
+
+	.timelineHeader {
+		margin-bottom: 55px;
+		#pullTimeline {
+			position: absolute;
+			margin-top: 19px;
+			margin-left: 70px;
+			left: 0;
+
+			.pullTimelineButton {
+				padding: 5px;
+				border-radius: 10px;
 			}
 		}
 	}

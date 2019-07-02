@@ -81,9 +81,9 @@ export class HomeTimeline extends React.Component {
 		const timeline = this.state.errorMsg != null ? <Error errorMsg={this.state.errorMsg} /> : renderTimeline(this.state.timeline, true);
 		return(
 			<div className="homeTimeline">
-				<div className="homeTimelineHeader">
-					<div id="pullHomeTimeline">
-						<button className="pullHomeTimelineButton" type="button" onClick={() => this.pullTimeline()}>Pull Home Timeline</button>
+				<div className="timelineHeader">
+					<div id="pullTimeline">
+						<button className="pullTimelineButton" type="button" onClick={() => this.pullTimeline()}>Pull Home Timeline</button>
 					</div>
 					<div className="filterHomeTimeline">
 						<input className="filter-keyword" onChange={(e) => this.handleOnChange(e)}/><button className="filterHomeTimelineButton" onClick={() => this.filterTimeline()} disabled={this.state.filterKeyword.length == 0}>Filter</button>
@@ -129,9 +129,9 @@ export class UserTimeline extends React.Component {
 		const timeline = this.state.errorMsg != null ? <Error errorMsg={this.state.errorMsg} /> : renderTimeline(this.state.timeline, false);
 		return(
 			<div className="userTimeline">
-				<div className="userTimelineHeader">
-					<div id="pullUserTimeline">
-						<button className="pullUserTimelineButton" type="button" onClick={() => this.pullTimeline()}>Pull User Timeline</button>
+				<div className="timelineHeader">
+					<div id="pullTimeline">
+						<button className="pullTimelineButton" type="button" onClick={() => this.pullTimeline()}>Pull User Timeline</button>
 					</div>
 				</div>
 				{timeline}
