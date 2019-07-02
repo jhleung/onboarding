@@ -65,14 +65,16 @@ export class HomeTimeline extends React.Component {
 
 	filterTimeline() {
 		const keyword = this.state.filterKeyword;
-		filterHomeTimeline(keyword).then((responseText) => {
-			this.state.timeline = responseText;
-			this.state.errorMsg = null;
-			this.setState(this.state);
-		}).catch((error) => {
-			this.state.errorMsg = error;
-			this.setState(this.state);
-		});
+		if (keyword.length > 0) {
+			filterHomeTimeline(keyword).then((responseText) => {
+				this.state.timeline = responseText;
+				this.state.errorMsg = null;
+				this.setState(this.state);
+			}).catch((error) => {
+				this.state.errorMsg = error;
+				this.setState(this.state);
+			})
+		}
 	}
 
 	render() {

@@ -14,6 +14,11 @@ $message-text-color: black;
 	border-bottom: $border-bottom;
 }
 
+@mixin tab-border-left-right($left, $right) {
+	border-left: $left solid;
+	border-right: $right solid;
+}
+
 %title-style {
 	text-align: center;
 	font-size: 25px;
@@ -30,6 +35,14 @@ $message-text-color: black;
 	border-radius: 10px;
 }
 
+%tab {
+	cursor: default;
+	padding: 5px;
+	border-top-left-radius: 7px;
+	border-top-right-radius: 7px;
+	border-top: 2px solid;
+}
+
 * {
 	font-family: Montserrat;
 }
@@ -42,25 +55,75 @@ body {
 	}
 }
 
-.post-tweet {
-	.post-tweet-input {
+.tab-wrapper {
+	.timeline-tab-nav {
+		padding-bottom: 5px;
+		border-bottom: 2px solid gainsboro; 
 
+		a {
+			&:hover {
+				background-color: lightblue;
+			}
+		}
+
+		.tab-active {
+			background-color: cadetblue;
+		}
+
+		.tab-0 {
+			margin-left: 23px;
+			@extend %tab;
+			@include tab-border-left-right(2px, 1px);
+		}
+
+		.tab-1 {
+			@extend %tab;
+			@include tab-border-left-right(1px, 1px);
+		}
+
+		.tab-2 {
+			@extend %tab;
+			@include tab-border-left-right(1px, 2px);
+		}
+	}
+
+}
+
+.post-tweet {
+	margin-left: 25px;
+	margin-top: 20px;
+	.post-tweet-input {
 		.tweet-message {
+			position: absolute;
+			padding: 10px;
 		    text-align: left;
 		    font-size: 15px;
 			height: 250px;
 			width: 500px;
 		}
+
+		.tweet-character-count {
+			position: absolute;
+			font-size: 13px;
+			color: silver;
+			margin-top: 225px;
+			margin-left: 465px;
+		}
 	}
 
 	.post-tweet-footer {
-
-		>.post-tweet-status {
+		.post-tweet-status {
 			display: inline-block;
+			text-align: right;
+			font-size: 13px;
+			margin-top: 255px;
+			margin-right: 3px;
+			width: 423px;
 		}
 
 		.post-tweet-button-wrapper {
 			display: inline-block;
+			margin-top: 255px;
 		}
 	}
 }
@@ -72,7 +135,7 @@ body {
 			margin-bottom: 55px;
 			#pullHomeTimeline {
 				@extend %button-wrapper-div;
-				margin-left: 25px;
+				margin-left: 70px;
 				left: 0;
 
 				.pullHomeTimelineButton {
@@ -82,7 +145,7 @@ body {
 
 			.filterHomeTimeline {
 				position: absolute;
-				margin-right: 10px;
+				margin-right: 70px;
 				margin-top: 27px;
 				right: 0;
 
@@ -122,7 +185,7 @@ body {
 			margin-bottom: 55px;
 			#pullUserTimeline {
 				@extend %button-wrapper-div;
-				margin-left: 25px;
+				margin-left: 70px;
 				left: 0;
 
 				.pullUserTimelineButton {
@@ -151,13 +214,15 @@ body {
 	}
 
 	.error {
-		margin: 0px 10px 40px 25px;
+		margin: 0px 70px 40px 70px;
+		border: 1px solid;
 		padding: 10px;
+		width: 89.3vw;
 	}
 
 	#timeline-inner {
 		border: 1px solid;
-		margin: 0px 10px 40px 25px;
+		margin: 0px 70px 40px 70px;
 
 		.tweet-style-one-last-tweet {
 			@include tweet-style($user-timeline-color-one, 0px);

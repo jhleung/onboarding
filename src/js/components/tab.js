@@ -19,18 +19,17 @@ export default class Tab extends React.Component {
 	}
 	
 	render() {
-		const tabClassName = "tab";
 		const activeTabClassName = "tab-active";
 
 		return (
 			<div className="tab-wrapper">
 				<nav className="timeline-tab-nav">
-					<button className={this.state.activeTabIndex == 0 ? activeTabClassName : tabClassName} 
-						onClick={() => this.setActiveTabIndex(0)}>Home Timeline</button>	
-					<button className={this.state.activeTabIndex == 1 ? activeTabClassName : tabClassName} 
-						onClick={() => this.setActiveTabIndex(1)}>User Timeline</button>
-					<button className={this.state.activeTabIndex == 2 ? activeTabClassName : tabClassName} 
-						onClick={() => this.setActiveTabIndex(2)}>Post Tweet</button>
+					<a className={this.state.activeTabIndex == 0 ? `tab-0 ${activeTabClassName}` : "tab-0"} 
+						onClick={() => this.setActiveTabIndex(0)}>Home Timeline</a>	
+					<a className={this.state.activeTabIndex == 1 ? `tab-1 ${activeTabClassName}` : "tab-1"} 
+						onClick={() => this.setActiveTabIndex(1)}>User Timeline</a>
+					<a className={this.state.activeTabIndex == 2 ? `tab-2 ${activeTabClassName}` : "tab-2"}  
+						onClick={() => this.setActiveTabIndex(2)}>Post Tweet</a>
 				</nav>
 				<div className="timeline">
 					{this.state.activeTabIndex == 0 && <HomeTimeline />}
