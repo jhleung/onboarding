@@ -47,6 +47,7 @@ body {
 
 .tab-wrapper {
 	.tab-nav {
+		margin: 0 auto;
 		padding-bottom: 5px;
 		border-bottom: 2px solid gainsboro; 
 
@@ -80,8 +81,11 @@ body {
 }
 
 .post-tweet {
-	margin-left: 25px;
+	position: fixed;
 	margin-top: 20px;
+	left: calc(50%);
+	transform: translate(-50%, 0);
+
 	.post-tweet-input {
 		.tweet-message {
 			position: absolute;
@@ -90,6 +94,7 @@ body {
 		    font-size: 15px;
 			height: 250px;
 			width: 500px;
+			resize: none;
 		}
 
 		.tweet-character-count {
@@ -97,7 +102,7 @@ body {
 			font-size: 13px;
 			color: silver;
 			margin-top: 225px;
-			margin-left: 465px;
+			margin-left: 470px;
 		}
 	}
 
