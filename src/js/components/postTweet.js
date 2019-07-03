@@ -12,8 +12,7 @@ export default class PostTweet extends React.Component {
 	}
 
 	handleOnChange(e) {
-		this.state.tweet = e.target.value;
-		this.setState(this.state);
+		this.setState({tweet: e.target.value});
 	};
 
 	postTweet() {

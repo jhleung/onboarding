@@ -14,28 +14,28 @@ export default class Tab extends React.Component {
 	}
 
 	setActiveTabIndex(index) {
-		this.state.activeTabIndex = index;
-		this.setState(this.state);
+		this.setState({activeTabIndex: index});
 	}
 	
 	render() {
-		const activeTabClassName = "tab-active";
-
+		const activeTabClassName = 'tab-active';
 		return (
 			<div className="tab-wrapper">
 				<nav className="tab-nav">
-					<a className={this.state.activeTabIndex == 0 ? `tab-0 ${activeTabClassName}` : "tab-0"} 
+					<a className={`tab-0 ${this.state.activeTabIndex == 0 ? activeTabClassName : ''}`} 
 						onClick={() => this.setActiveTabIndex(0)}>Home Timeline</a>	
-					<a className={this.state.activeTabIndex == 1 ? `tab-1 ${activeTabClassName}` : "tab-1"} 
+					<a className={`tab-1 ${this.state.activeTabIndex == 1 ? activeTabClassName : ''}`} 
 						onClick={() => this.setActiveTabIndex(1)}>User Timeline</a>
-					<a className={this.state.activeTabIndex == 2 ? `tab-2 ${activeTabClassName}` : "tab-2"}  
+					<a className={`tab-2 ${this.state.activeTabIndex == 2 ? activeTabClassName : ''}`}  
 						onClick={() => this.setActiveTabIndex(2)}>Post Tweet</a>
 				</nav>
 				<div className="timeline">
 					{this.state.activeTabIndex == 0 && <HomeTimeline />}
 					{this.state.activeTabIndex == 1 && <UserTimeline />}
 				</div>
-				{this.state.activeTabIndex == 2 && <PostTweet />}
+				<div className="post-tweet-wrapper">
+					{this.state.activeTabIndex == 2 && <PostTweet />}
+				</div>
 			</div>
 		);
 	}

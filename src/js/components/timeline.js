@@ -47,32 +47,25 @@ export class HomeTimeline extends React.Component {
 	}
 
 	handleOnChange(e) {
-		this.state.filterKeyword = e.target.value;
-		this.setState(this.state);
+		this.setState({filterKeyword: e.target.value});
 	}
 
 	pullTimeline() {
 		pullHomeTimeline().then((responseText) => {
-			this.state.timeline = responseText;
-			this.state.errorMsg = null;
-			this.setState(this.state);
+			this.setState({timeline: responseText, errorMsg: null});
 		}).catch((error) => {
 			console.log(error);
-			this.state.errorMsg = error;
-			this.setState(this.state);
+			this.setState({errorMsg: error});
 		});
 	}
 
 	filterTimeline() {
 		const keyword = this.state.filterKeyword;
-		if (keyword.length > 0) {
+		if (keyword.length > 0 && keyword != ' ') {
 			filterHomeTimeline(keyword).then((responseText) => {
-				this.state.timeline = responseText;
-				this.state.errorMsg = null;
-				this.setState(this.state);
+				this.setState({timeline: responseText, errorMsg: null});
 			}).catch((error) => {
-				this.state.errorMsg = error;
-				this.setState(this.state);
+				this.setState({errorMsg: error});
 			})
 		}
 	}
