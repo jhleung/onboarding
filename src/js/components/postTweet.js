@@ -23,6 +23,7 @@ export default class PostTweet extends React.Component {
 				this.state.result = 'Success!';
 				this.setState(this.state);
 			}).catch((error) => {
+				console.log(error);
 				this.state.result = error;
 				this.setState(this.state);
 			})
