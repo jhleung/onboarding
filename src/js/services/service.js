@@ -57,7 +57,7 @@ export const publishTweet = (tweet) => {
 			}
  		).then((response) => {
 			if (response.status == 200) {
-				resolve(response.json());
+				resolve('Success');
 			} else {
 				reject('Post tweet failed. Try again later.');
 			}

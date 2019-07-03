@@ -7,7 +7,8 @@ export default class PostTweet extends React.Component {
 		super(props);
 		this.state = {
 			tweet: '',
-			result: '',
+			successMsg: '',
+			errorMsg: ''
 		};
 	}
 
@@ -19,18 +20,17 @@ export default class PostTweet extends React.Component {
 		const message = this.state.tweet;
 		if (message.length > 0) {
 			publishTweet(message).then((responseText) => {
-				this.state.result = 'Success!';
-				this.setState(this.state);
+				this.setState({successMsg: responseText, errorMsg: ''});
 			}).catch((error) => {
 				console.log(error);
-				this.state.result = error;
-				this.setState(this.state);
+				this.setState({successMsg: '', errorMsg: error});
 			})
 		}
 	}
 
 	render() {
-		const resultMsgClassName = this.state.result == 'Success!' ? 'post-tweet-status-success' : 'post-tweet-status-error';
+		const resultMsgClassName = this.state.errorMsg == '' ? 'post-tweet-status-success' : 'post-tweet-status-error';
+		const result = this.state.errorMsg == '' ? this.state.successMsg : this.state.errorMsg;
 		return(
 			<div className="post-tweet">
 				<div className="post-tweet-input">
@@ -38,7 +38,7 @@ export default class PostTweet extends React.Component {
 					<div className="tweet-character-count">{this.state.tweet.length}</div>
 				</div>
 				<div className="post-tweet-footer">
-					<div className={resultMsgClassName}>{this.state.result}</div>
+					<div className={resultMsgClassName}>{result}</div>
 					<div className="post-tweet-button-wrapper">
 						<button className="post-tweet-button" onClick={() => this.postTweet()} disabled={this.state.tweet.length == 0}>Post Tweet</button>
 					</div>
