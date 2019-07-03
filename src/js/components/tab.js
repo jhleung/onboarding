@@ -29,13 +29,9 @@ export default class Tab extends React.Component {
 					<a className={`tab-2 ${this.state.activeTabIndex == 2 ? activeTabClassName : ''}`}  
 						onClick={() => this.setActiveTabIndex(2)}>Post Tweet</a>
 				</nav>
-				<div className="timeline">
-					{this.state.activeTabIndex == 0 && <HomeTimeline />}
-					{this.state.activeTabIndex == 1 && <UserTimeline />}
-				</div>
-				<div className="post-tweet-wrapper">
-					{this.state.activeTabIndex == 2 && <PostTweet />}
-				</div>
+				{this.state.activeTabIndex == 0 && <HomeTimeline />}
+				{this.state.activeTabIndex == 1 && <UserTimeline />}
+				{this.state.activeTabIndex == 2 && <PostTweet />}
 			</div>
 		);
 	}

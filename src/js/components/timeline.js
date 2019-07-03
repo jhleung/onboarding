@@ -73,16 +73,18 @@ export class HomeTimeline extends React.Component {
 	render() {
 		const timeline = this.state.errorMsg != null ? <Error errorMsg={this.state.errorMsg} /> : renderTimeline(this.state.timeline, true);
 		return(
-			<div className="homeTimeline">
-				<div className="timelineHeader">
-					<div id="pullTimeline">
-						<button className="pullTimelineButton" type="button" onClick={() => this.pullTimeline()}>Pull Home Timeline</button>
+			<div className="timeline">
+				<div className="homeTimeline">
+					<div className="timelineHeader">
+						<div id="pullTimeline">
+							<button className="pullTimelineButton" type="button" onClick={() => this.pullTimeline()}>Pull Home Timeline</button>
+						</div>
+						<div className="filterHomeTimeline">
+							<input className="filter-keyword" onChange={(e) => this.handleOnChange(e)}/><button className="filterHomeTimelineButton" onClick={() => this.filterTimeline()} disabled={this.state.filterKeyword.length == 0}>Filter</button>
+						</div>
 					</div>
-					<div className="filterHomeTimeline">
-						<input className="filter-keyword" onChange={(e) => this.handleOnChange(e)}/><button className="filterHomeTimelineButton" onClick={() => this.filterTimeline()} disabled={this.state.filterKeyword.length == 0}>Filter</button>
-					</div>
+					{timeline}
 				</div>
-				{timeline}
 			</div>
 		);
 	}
@@ -121,13 +123,15 @@ export class UserTimeline extends React.Component {
 	render() {
 		const timeline = this.state.errorMsg != null ? <Error errorMsg={this.state.errorMsg} /> : renderTimeline(this.state.timeline, false);
 		return(
-			<div className="userTimeline">
-				<div className="timelineHeader">
-					<div id="pullTimeline">
-						<button className="pullTimelineButton" type="button" onClick={() => this.pullTimeline()}>Pull User Timeline</button>
+			<div className="timeline">
+				<div className="userTimeline">
+					<div className="timelineHeader">
+						<div id="pullTimeline">
+							<button className="pullTimelineButton" type="button" onClick={() => this.pullTimeline()}>Pull User Timeline</button>
+						</div>
 					</div>
+					{timeline}
 				</div>
-				{timeline}
 			</div>
 		);
 	}
