@@ -80,7 +80,6 @@ describe('Pull user timeline', () => {
 		window.fetch = jest.fn(() => mockPromise);
 		await fetchTimeline(endpoint).catch((res) => expect(res).toEqual(`An error has occurred. Please contact system administrator.`));
 	});
-
 });
 
 
