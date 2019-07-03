@@ -33,6 +33,15 @@ $message-text-color: black;
 	border-top: 2px solid;
 }
 
+%post-tweet-status {
+	display: inline-block;
+	text-align: right;
+	font-size: 13px;
+	margin-top: 255px;
+	margin-right: 3px;
+	width: 423px;
+}
+
 * {
 	font-family: Montserrat;
 }
@@ -48,7 +57,7 @@ body {
 .tab-wrapper {
 	.tab-nav {
 		margin: 0 auto;
-		padding-bottom: 5px;
+		padding-bottom: 10px;
 		border-bottom: 2px solid gainsboro; 
 
 		a {
@@ -82,7 +91,7 @@ body {
 
 .post-tweet {
 	position: fixed;
-	margin-top: 20px;
+	margin-top: 10px;
 	left: calc(50%);
 	transform: translate(-50%);
 
@@ -107,13 +116,14 @@ body {
 	}
 
 	.post-tweet-footer {
-		.post-tweet-status {
-			display: inline-block;
-			text-align: right;
-			font-size: 13px;
-			margin-top: 255px;
-			margin-right: 3px;
-			width: 423px;
+		.post-tweet-status-success {
+			@extend %post-tweet-status;
+			color: green;
+		}
+		
+		.post-tweet-status-error {
+			@extend %post-tweet-status;
+			color: red;
 		}
 
 		.post-tweet-button-wrapper {
