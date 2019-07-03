@@ -20,7 +20,7 @@ export default class PostTweet extends React.Component {
 		const message = this.state.tweet;
 		if (message.length > 0) {
 			publishTweet(message).then((responseText) => {
-				this.state.result = `Success! \'${message}\' has been posted to ${responseText.user.handle}`;
+				this.state.result = 'Success!';
 				this.setState(this.state);
 			}).catch((error) => {
 				console.log(error);
