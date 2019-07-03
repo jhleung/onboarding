@@ -59,7 +59,7 @@ export const publishTweet = (tweet) => {
 			if (response.status == 200) {
 				resolve(response.json());
 			} else {
-				reject('Post tweet failed.');
+				reject('Post tweet failed. Try again later.');
 			}
 		}).catch((err) => {
 			reject('An error has occurred. Please contact system administrator.');
