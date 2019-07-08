@@ -19,34 +19,6 @@ $message-text-color: black;
 	border-right: $right solid;
 }
 
-%title-style {
-	text-align: center;
-	font-size: 25px;
-	font-weight: bold;
-}
-
-%tab {
-	cursor: default;
-	padding: 5px;
-	border-top-left-radius: 7px;
-	border-top-right-radius: 7px;
-	border-top: 2px solid;
-}
-
-%post-tweet-status {
-	display: inline-block;
-	text-align: right;
-	font-size: 13px;
-	margin: 265px 3px 0 0;
-	width: 423px;
-}
-
-%hover-link {
-	&:hover {
-		background-color: lightblue;
-	}
-}
-
 * {
 	font-family: Montserrat;
 }
@@ -65,27 +37,32 @@ body {
 		padding-bottom: 5px;
 		border-bottom: 2px solid gainsboro; 
 
+		.tab-0, .tab-1, .tab-2 {
+			&:hover {
+				background-color: lightblue;
+			}
+
+			cursor: default;
+			padding: 5px;
+			border-top-left-radius: 7px;
+			border-top-right-radius: 7px;
+			border-top: 2px solid;
+		}
+
 		.tab-active {
 			background-color: cadetblue;
-			@extend %hover-link;
-		}
+		}g
 
 		.tab-0 {
 			margin-left: 23px;
-			@extend %tab;
-			@extend %hover-link;
 			@include tab-border-left-right(2px, 1px);
 		}
 
 		.tab-1 {
-			@extend %tab;
-			@extend %hover-link;
 			@include tab-border-left-right(1px, 1px);
 		}
 
 		.tab-2 {
-			@extend %tab;
-			@extend %hover-link;
 			@include tab-border-left-right(1px, 2px);
 		}
 	}
@@ -118,13 +95,19 @@ body {
 	}
 
 	.post-tweet-footer {
+		.post-tweet-status-success, .post-tweet-status-error  {
+			display: inline-block;
+			text-align: right;
+			font-size: 13px;
+			margin: 265px 3px 0 0;
+			width: 423px;
+		}
+
 		.post-tweet-status-success {
-			@extend %post-tweet-status;
 			color: green;
 		}
 		
 		.post-tweet-status-error {
-			@extend %post-tweet-status;
 			color: red;
 		}
 
