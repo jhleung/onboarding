@@ -22,7 +22,7 @@ const server = http.createServer((req, res) => {
 		readFile(path.join(__dirname, '../index.html'), res);
 	else if (pathname == '/main.css')
 		readFile(path.join(__dirname, '../main.css'), res);
-	else if (pathname == '/js/pullTimeline.js') {
-		readFile(path.join(__dirname, '/pullTimeline.js'), res);
+	else if (pathname == '/js/app.js') {
+		readFile(path.join(__dirname, '/app.js'), res);
 	}
 }).listen(9000);

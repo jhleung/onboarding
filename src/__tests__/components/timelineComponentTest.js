@@ -12,8 +12,7 @@ describe('HomeTimeline component', () => {
 		wrapper.setState({timeline: [{"tweet1":"1"}, {"tweet2":"2"}, {"tweet3":"3"}], errorMsg: null});
 		expect(wrapper.find('div#timeline-inner').length).toEqual(1);
 		expect(wrapper.find('div.homeTimeline').length).toEqual(1);
-		expect(wrapper.find('div.homeTimelineHeader').length).toEqual(1);
-		expect(wrapper.find('div#pullHomeTimeline').length).toEqual(1);
+		expect(wrapper.find('div#pullTimeline').length).toEqual(1);
 		expect(wrapper.find('div.filterHomeTimeline').length).toEqual(1);
 		expect(wrapper.find('input.filter-keyword').length).toEqual(1);
 		expect(wrapper.find('button').length).toEqual(2);
@@ -39,8 +38,7 @@ describe('UserTimeline component', () => {
 		wrapper.setState({timeline: [{"tweet1":"1"}, {"tweet2":"2"}, {"tweet3":"3"}], errorMsg: null});
 		expect(wrapper.find('div#timeline-inner').length).toEqual(1);
 		expect(wrapper.find('div.userTimeline').length).toEqual(1);
-		expect(wrapper.find('div.userTimelineHeader').length).toEqual(1);
-		expect(wrapper.find('div#pullUserTimeline').length).toEqual(1);
+		expect(wrapper.find('div#pullTimeline').length).toEqual(1);
 		expect(wrapper.find('button').length).toEqual(1);
 		expect(wrapper.find('Tweet.tweet-style-one').length).toEqual(1);
 		expect(wrapper.find('Tweet.tweet-style-two').length).toEqual(1);

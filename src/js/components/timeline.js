@@ -47,48 +47,44 @@ export class HomeTimeline extends React.Component {
 	}
 
 	handleOnChange(e) {
-		this.state.filterKeyword = e.target.value;
-		this.setState(this.state);
+		this.setState({filterKeyword: e.target.value});
 	}
 
 	pullTimeline() {
 		pullHomeTimeline().then((responseText) => {
-			this.state.timeline = responseText;
-			this.state.errorMsg = null;
-			this.setState(this.state);
+			this.setState({timeline: responseText, errorMsg: null});
 		}).catch((error) => {
 			console.log(error);
-			this.state.errorMsg = error;
-			this.setState(this.state);
+			this.setState({errorMsg: error});
 		});
 	}
 
 	filterTimeline() {
 		const keyword = this.state.filterKeyword;
-		filterHomeTimeline(keyword).then((responseText) => {
-			this.state.timeline = responseText;
-			this.state.errorMsg = null;
-			this.setState(this.state);
-		}).catch((error) => {
-			this.state.errorMsg = error;
-			this.setState(this.state);
-		});
+		if (keyword.length > 0 && keyword != ' ') {
+			filterHomeTimeline(keyword).then((responseText) => {
+				this.setState({timeline: responseText, errorMsg: null});
+			}).catch((error) => {
+				this.setState({errorMsg: error});
+			})
+		}
 	}
 
 	render() {
 		const timeline = this.state.errorMsg != null ? <Error errorMsg={this.state.errorMsg} /> : renderTimeline(this.state.timeline, true);
 		return(
-			<div className="homeTimeline">
-				<div className="homeTimelineHeader">
-					<div id="pullHomeTimeline">
-						<button className="pullHomeTimelineButton" type="button" onClick={() => this.pullTimeline()}>Pull Home Timeline</button>
+			<div className="timeline">
+				<div className="homeTimeline">
+					<div className="timelineHeader">
+						<div id="pullTimeline">
+							<button className="pullTimelineButton" type="button" onClick={() => this.pullTimeline()}>Pull Home Timeline</button>
+						</div>
+						<div className="filterHomeTimeline">
+							<input className="filter-keyword" onChange={(e) => this.handleOnChange(e)}/><button className="filterHomeTimelineButton" onClick={() => this.filterTimeline()} disabled={this.state.filterKeyword.length == 0}>Filter</button>
+						</div>
 					</div>
-					<div className="filterHomeTimeline">
-						<input className="filter-keyword" onChange={(e) => this.handleOnChange(e)}/><button className="filterHomeTimelineButton" onClick={() => this.filterTimeline()} disabled={this.state.filterKeyword.length == 0}>Filter</button>
-					</div>
-					<div className="homeTimelineTitle">Home Timeline</div>
+					{timeline}
 				</div>
-				{timeline}
 			</div>
 		);
 	}
@@ -127,14 +123,15 @@ export class UserTimeline extends React.Component {
 	render() {
 		const timeline = this.state.errorMsg != null ? <Error errorMsg={this.state.errorMsg} /> : renderTimeline(this.state.timeline, false);
 		return(
-			<div className="userTimeline">
-				<div className="userTimelineHeader">
-					<div id="pullUserTimeline">
-						<button className="pullUserTimelineButton" type="button" onClick={() => this.pullTimeline()}>Pull User Timeline</button>
+			<div className="timeline">
+				<div className="userTimeline">
+					<div className="timelineHeader">
+						<div id="pullTimeline">
+							<button className="pullTimelineButton" type="button" onClick={() => this.pullTimeline()}>Pull User Timeline</button>
+						</div>
 					</div>
-					<div className="userTimelineTitle">User Timeline</div>
+					{timeline}
 				</div>
-				{timeline}
 			</div>
 		);
 	}
