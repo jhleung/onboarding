@@ -29,7 +29,7 @@ export default class PostTweet extends React.Component {
 	}
 
 	render() {
-		const resultMsgClassName = this.state.errorMsg == '' ? 'post-tweet-status-success' : 'post-tweet-status-error';
+		const resultMsgClassName = `post-tweet-status ${this.state.errorMsg == '' ? 'post-tweet-status-success' : 'post-tweet-status-error'}`;
 		const result = this.state.errorMsg == '' ? this.state.successMsg : this.state.errorMsg;
 		return(
 			<div className="post-tweet">

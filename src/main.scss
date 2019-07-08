@@ -37,7 +37,7 @@ body {
 		padding-bottom: 5px;
 		border-bottom: 2px solid gainsboro; 
 
-		.tab-0, .tab-1, .tab-2 {
+		.tab {
 			&:hover {
 				background-color: lightblue;
 			}
@@ -51,7 +51,7 @@ body {
 
 		.tab-active {
 			background-color: cadetblue;
-		}g
+		}
 
 		.tab-0 {
 			margin-left: 23px;
@@ -95,7 +95,7 @@ body {
 	}
 
 	.post-tweet-footer {
-		.post-tweet-status-success, .post-tweet-status-error  {
+		.post-tweet-status {
 			display: inline-block;
 			text-align: right;
 			font-size: 13px;
@@ -192,7 +192,7 @@ body {
 	}
 
 	.error {
-		margin: 0 150px 40px 150px;
+		margin: 0 150px 40px;
 		border: 1px solid;
 		padding: 10px;
 		width: 79.2vw;
@@ -200,7 +200,7 @@ body {
 
 	#timeline-inner {
 		border: 1px solid;
-		margin: 0 150px 40px 150px;
+		margin: 0 150px 40px;
 
 		.tweet-style-one-last-tweet {
 			@include tweet-style($user-timeline-color-one, 0);
