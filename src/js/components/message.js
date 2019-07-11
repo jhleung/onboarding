@@ -7,14 +7,18 @@ export default class Message extends React.Component {
 
 	render() {
 		const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-		const date = new Date(this.props.createdAt);
+		const date = new Date(this.props.tweet.createdAt);
 		let timestamp = months[date.getMonth()] + " " + date.getDay();
 
-		let tweetUrl = `https://twitter.com/${this.props.handle}/status/${this.props.id}`
+		let tweetUrl = `https://twitter.com/${this.props.tweet.user.handle}/status/${this.props.tweet.id}`
 		return(
 			<div className="message">
 				<div className="timestamp">{timestamp}</div>
-				<a className="message-link" target="_blank" rel="noopener noreferrer" href={tweetUrl}>{this.props.message}</a>
+				<a className="message-link" target="_blank" rel="noopener noreferrer" href={tweetUrl}>{this.props.tweet.message}</a>
+				{this.props.displayReplyButton && 
+					<div className="reply-button-wrapper">
+						<i className="fa fa-reply reply-button" onClick={() => this.props.toggleOverlayReplyUI(this.props.tweet)}></i>
+					</div>}
 			</div>
 		);
 	}

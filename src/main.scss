@@ -31,6 +31,10 @@ body {
 	}
 }
 
+.transparent {
+	opacity: 0.5;
+}
+
 .tab-wrapper {
 	.tab-nav {
 		margin: 0 auto;
@@ -117,6 +121,52 @@ body {
 		}
 	}
 }
+
+.profile {
+	display: inline-block;
+	@include dimensions(175px, 110px);
+	margin: 15px 0 5px;
+	vertical-align: middle;
+
+	.profile-image {
+		display: block;
+		@include dimensions(60px, 60px);
+		border-radius: 50%;
+		margin: 0 auto 5px;
+	}   
+
+	.name {
+		font-size: 14px;
+		font-weight: bold;
+		text-align: center;
+		margin-bottom: 5px;
+	}
+
+	.handle {
+		text-align: center;
+		font-size: 12px;
+	}
+}
+
+.message {
+	width: 67vw;
+	display: inline-block;
+	vertical-align: middle;
+
+	.timestamp {
+		font-style: italic;
+		font-size: 10px;
+		padding-bottom: 4px;
+	}
+
+	.message-link {
+		text-decoration: none;
+		font-size: 14px;
+		color: $message-text-color;
+		word-break: break-word;
+	}
+}
+
 
 .timeline {
 	overflow: auto;
@@ -218,54 +268,69 @@ body {
 			@include tweet-style($user-timeline-color-two, 1px solid lightgrey);
 		}
 
-		.profile {
+		.reply-button-wrapper {
+			margin-left: 10px;
 			display: inline-block;
-			@include dimensions(175px, 110px);
-			margin: 15px 0 5px;
-			vertical-align: middle;
-
-			.profile-image {
-				display: block;
-				@include dimensions(60px, 60px);
-				border-radius: 50%;
-				margin: 0 auto 5px;
-			}   
-
-			.name {
-				font-size: 14px;
-				font-weight: bold;
-				text-align: center;
-				margin-bottom: 5px;
-			}
-
-			.handle {
-				text-align: center;
-				font-size: 12px;
+			.reply-button {
+				&:hover {
+					color: grey;
+				}
 			}
 		}
 
-		.message {
-			width: 70vw;
-			display: inline-block;
-			vertical-align: middle;
+	}
+	
+	&::after {
+		clear: both;
+	}
+}
 
-			.timestamp {
-				font-style: italic;
-				font-size: 10px;
-				padding-bottom: 4px;
-			}
+.reply-overlay {
+	width: 600px;
+	height: 550px;
+	position: fixed;
+	right: 30;
+	top: 30;
+	background-color: white;
+	border: 1px solid black;
 
-			.message-link {
-				text-decoration: none;
-				font-size: 14px;
-				color: $message-text-color;
-				word-break: break-word;
+	.message {
+		margin-top: 10px;
+		width: 20vw;
+	}
+
+	.post-tweet {
+		position: absolute;
+		left: calc(50%);
+		transform: translate(-58.5%);
+
+		.post-tweet-footer {
+			.post-tweet-button-wrapper {
+				position: absolute;
+				.post-tweet-button {
+					width: 76.58px;
+				}
 			}
 		}
 	}
 
+	.cancel-reply {
+		position: absolute;
+		margin-top: 520px;
+		left: 10;
+		font-size: 15px;
+		border-radius: 5px;
+	}
 
-	&::after {
-		clear: both;
+	.cancel-reply-x {
+		position: absolute;
+		top: -20;
+		right: -10;
+		font-size: 36px;
+		color: grey;
+
+		&:hover {
+			color: lightgrey;
+		}
 	}
 }

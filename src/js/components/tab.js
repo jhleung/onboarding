@@ -30,8 +30,8 @@ export default class Tab extends React.Component {
 					<a className={`${tabClassName} tab-2 ${this.state.activeTabIndex == 2 ? activeTabClassName : ''}`}  
 						onClick={() => this.setActiveTabIndex(2)}>Post Tweet</a>
 				</nav>
-				{this.state.activeTabIndex == 0 && <HomeTimeline />}
-				{this.state.activeTabIndex == 1 && <UserTimeline />}
+				{this.state.activeTabIndex == 0 && <HomeTimeline toggleOverlayReplyUI={this.props.toggleOverlayReplyUI}/>}
+				{this.state.activeTabIndex == 1 && <UserTimeline toggleOverlayReplyUI={this.props.toggleOverlayReplyUI}/>}
 				{this.state.activeTabIndex == 2 && <PostTweet />}
 			</div>
 		);

@@ -1,25 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {publishTweet} from '../services/service.js';
+import {publishTweet, replyTweet} from '../services/service.js';
 
 export default class PostTweet extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			tweet: '',
+			message: '',
 			successMsg: '',
 			errorMsg: ''
 		};
 	}
 
 	handleOnChange(e) {
-		this.setState({tweet: e.target.value});
+		this.setState({message: e.target.value});
 	};
 
-	postTweet() {
-		const message = this.state.tweet;
+	publishTweet() {
+		const message = this.state.message;
 		if (message.length > 0) {
 			publishTweet(message).then((responseText) => {
+				this.setState({successMsg: responseText, errorMsg: ''});
+			}).catch((error) => {
+				console.log(error);
+				this.setState({successMsg: '', errorMsg: error});
+			})
+		}
+	}
+
+	replyTweet() {
+		const message = this.state.message;
+		if (message.length > 0) {
+			replyTweet(message, this.props.inReplyToId).then((responseText) => {
 				this.setState({successMsg: responseText, errorMsg: ''});
 			}).catch((error) => {
 				console.log(error);
@@ -35,12 +47,14 @@ export default class PostTweet extends React.Component {
 			<div className="post-tweet">
 				<div className="post-tweet-input">
 					<textarea className="tweet-message" maxLength="280" onChange={(e) => this.handleOnChange(e)}/>
-					<div className="tweet-character-count">{this.state.tweet.length}</div>
+					<div className="tweet-character-count">{this.state.message.length}</div>
 				</div>
 				<div className="post-tweet-footer">
 					<div className={resultMsgClassName}>{result}</div>
 					<div className="post-tweet-button-wrapper">
-						<button className="post-tweet-button" onClick={() => this.postTweet()} disabled={this.state.tweet.length == 0}>Post Tweet</button>
+						<button className="post-tweet-button" onClick={this.props.inReplyToId ? () => this.replyTweet() : () => this.publishTweet()} disabled={this.state.message.length == 0}>
+							{this.props.inReplyToId ? 'Reply' : 'Post Tweet'}
+						</button>
 					</div>
 				</div>
 			</div>
