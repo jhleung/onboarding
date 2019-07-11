@@ -29,7 +29,7 @@ export default class App extends React.Component {
     render() {
         const tabClassName = `tabs ${this.state.displayReplyUI ? 'transparent' : ''}`;
         return(
-            <div className="apps">
+            <div className="app">
     			<div className={tabClassName} onClick={() => this.closeOverlayReplyUI()}>
     				<Tab toggleOverlayReplyUI={this.toggleOverlayReplyUI}/>
     			</div>

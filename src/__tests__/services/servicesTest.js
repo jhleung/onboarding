@@ -105,14 +105,14 @@ describe('Push tweet', () => {
 		const mockPromise = createMockPromiseResolved(200);
 		window.fetch = jest.fn(() => mockPromise);
 		window.Headers = jest.fn();
-		await publishTweet('test').then((res) => expect(res).toEqual('success'));
+		await publishTweet('test').then((res) => expect(res).toEqual('Success'));
 	});
 
 	it('should get error response from api call', async () => {
 		const mockPromise = createMockPromiseResolved(500);
 		window.fetch = jest.fn(() => mockPromise);
 		window.Headers = jest.fn();
-		await publishTweet('test').catch((res) => expect(res).toEqual('Post tweet failed.'));
+		await publishTweet('test').catch((res) => expect(res).toEqual('Post tweet failed. Try again later.'));
 	});
 
 	it('should get network error response', async () => {
