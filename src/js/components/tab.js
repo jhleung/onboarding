@@ -19,7 +19,7 @@ export default class Tab extends React.Component {
 	
 	render() {
 		const activeTabClassName = 'tab-active';
-		const tabClassName = 'tab';
+		const tabClassName = 'tab tweety-href';
 		return (
 			<div className="tab-wrapper">
 				<nav className="tab-nav">

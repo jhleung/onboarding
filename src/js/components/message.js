@@ -14,10 +14,10 @@ export default class Message extends React.Component {
 		return(
 			<div className="message">
 				<div className="timestamp">{timestamp}</div>
-				<a className="message-link" target="_blank" rel="noopener noreferrer" href={tweetUrl}>{this.props.tweet.message}</a>
+				<a className="message-link tweety-href" target="_blank" rel="noopener noreferrer" href={tweetUrl}>{this.props.tweet.message}</a>
 				{this.props.displayReplyButton && 
 					<div className="reply-button-wrapper">
-						<i className="fa fa-reply reply-button" onClick={() => this.props.toggleOverlayReplyUI(this.props.tweet)}></i>
+						<i className="fa fa-reply reply-button tweety-button" onClick={() => this.props.toggleOverlayReplyUI(this.props.tweet)}></i>
 					</div>}
 			</div>
 		);

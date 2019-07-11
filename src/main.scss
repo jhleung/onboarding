@@ -33,6 +33,14 @@ body {
 
 .transparent {
 	opacity: 0.5;
+
+	.tweety-button {
+	    pointer-events: none;
+	}
+
+	.tweety-href {
+	    pointer-events: none;
+	}
 }
 
 .tab-wrapper {
@@ -269,8 +277,6 @@ body {
 		}
 
 		.reply-button-wrapper {
-			margin-left: 10px;
-			display: inline-block;
 			.reply-button {
 				&:hover {
 					color: grey;
@@ -287,10 +293,10 @@ body {
 
 .reply-overlay {
 	width: 600px;
-	height: 550px;
+	height: 100vh;
 	position: fixed;
-	right: 30;
-	top: 30;
+	right: 0;
+	top: 0;
 	background-color: white;
 	border: 1px solid black;
 
@@ -316,16 +322,16 @@ body {
 
 	.cancel-reply {
 		position: absolute;
-		margin-top: 520px;
 		left: 10;
+		bottom: 10;
 		font-size: 15px;
 		border-radius: 5px;
 	}
 
 	.cancel-reply-x {
 		position: absolute;
-		top: -20;
-		right: -10;
+		top: 0;
+		right: 0;
 		font-size: 36px;
 		color: grey;
 
