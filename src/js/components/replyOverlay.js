@@ -12,10 +12,10 @@ export default class ReplyOverlay extends React.Component {
         return(
              <div className="reply-overlay">
                 <Profile profileImageUrl={this.props.tweet.user.profileImageUrl} userName={this.props.tweet.user.name} handle={this.props.tweet.user.handle} displayHandle={this.props.displayHandle}/> 
-                <Message tweet={this.props.tweet} toggleOverlayReplyUI={this.props.toggleOverlayReplyUI} displayReplyButton={false}/>
+                <Message tweet={this.props.tweet} toggleOverlayReplyUI={this.props.toggleOverlayReplyUI} displayReplyButton={false} displayMessageLink={false}/>
                 <PostTweet inReplyToId={this.props.tweet.id}/>
-                <button className="cancel-reply" onClick={() => this.props.toggleOverlayReplyUI()}>Cancel</button>
-                <i className="fa fa-close cancel-reply-x" onClick={() => this.props.toggleOverlayReplyUI()}></i>
+                <button className="cancel-reply tweety-button" onClick={() => this.props.toggleOverlayReplyUI()}>Cancel</button>
+                <i className="fa fa-close cancel-reply-x tweety-button" onClick={() => this.props.toggleOverlayReplyUI()}></i>
              </div>
         );
     }

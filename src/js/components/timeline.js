@@ -12,7 +12,7 @@ const renderTimeline = (timeline, displayHandle, displayReplyButton, toggleOverl
 		if (i == obj.length - 1)
 			className += "-last-tweet";
 
-		tweets.push(<Tweet key={i} tweet={tweet} className={className} displayHandle={displayHandle} displayReplyButton={displayReplyButton} toggleOverlayReplyUI={toggleOverlayReplyUI}/>);
+		tweets.push(<Tweet key={i} tweet={tweet} className={className} displayHandle={displayHandle} displayReplyButton={displayReplyButton} displayMessageLink={true} toggleOverlayReplyUI={toggleOverlayReplyUI}/>);
 	});
 
 	return(
@@ -80,7 +80,7 @@ export class HomeTimeline extends React.Component {
 							<button className="pullTimelineButton tweety-button" type="button" onClick={() => this.pullTimeline()}>Pull Home Timeline</button>
 						</div>
 						<div className="filterHomeTimeline">
-							<input className="filter-keyword" onChange={(e) => this.handleOnChange(e)}/><button className="filterHomeTimelineButton" onClick={() => this.filterTimeline()} disabled={this.state.filterKeyword.length == 0}>Filter</button>
+							<input className="filter-keyword" onChange={(e) => this.handleOnChange(e)}/><button className="filterHomeTimelineButton tweety-button" onClick={() => this.filterTimeline()} disabled={this.state.filterKeyword.length == 0}>Filter</button>
 						</div>
 					</div>
 					{timeline}

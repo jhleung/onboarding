@@ -52,7 +52,7 @@ export default class PostTweet extends React.Component {
 				<div className="post-tweet-footer">
 					<div className={resultMsgClassName}>{result}</div>
 					<div className="post-tweet-button-wrapper">
-						<button className="post-tweet-button" onClick={this.props.inReplyToId ? () => this.replyTweet() : () => this.publishTweet()} disabled={this.state.message.length == 0}>
+						<button className="post-tweet-button tweety-button" onClick={this.props.inReplyToId ? () => this.replyTweet() : () => this.publishTweet()} disabled={this.state.message.length == 0}>
 							{this.props.inReplyToId ? 'Reply' : 'Post Tweet'}
 						</button>
 					</div>

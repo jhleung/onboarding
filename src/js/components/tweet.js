@@ -12,7 +12,7 @@ export default class Tweet extends React.Component {
 			<div className={this.props.className}>
 				<Profile profileImageUrl={this.props.tweet.user.profileImageUrl} userName={this.props.tweet.user.name} 
 					handle={this.props.tweet.user.handle} displayHandle={this.props.displayHandle}/>	
-				<Message tweet={this.props.tweet} toggleOverlayReplyUI={this.props.toggleOverlayReplyUI} displayReplyButton={this.props.displayReplyButton}/>
+				<Message tweet={this.props.tweet} toggleOverlayReplyUI={this.props.toggleOverlayReplyUI} displayReplyButton={this.props.displayReplyButton} displayMessageLink={this.props.displayMessageLink}/>
 			</div>
 		);
 	}
