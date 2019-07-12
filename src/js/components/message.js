@@ -14,8 +14,7 @@ export default class Message extends React.Component {
 		return(
 			<div className="message">
 				<div className="timestamp">{timestamp}</div>
-				{this.props.displayMessageLink ? <a className="message-link tweety-href" target="_blank" rel="noopener noreferrer" href={tweetUrl}>{this.props.tweet.message}</a>
-							                   : <a className="message-link tweety-href disable-message-link" target="_blank" rel="noopener noreferrer">{this.props.tweet.message}</a>}
+				<a className={`message-link tweety-href ${this.props.displayMessageLink ? '' : 'disable-message-link'}`} target="_blank" rel="noopener noreferrer" href={this.props.displayMessageLink ? tweetUrl : undefined}>{this.props.tweet.message}</a>
 				{this.props.displayReplyButton && 
 					<div className="reply-button-wrapper">
 						<i className="fa fa-reply reply-button tweety-button" onClick={() => this.props.toggleOverlayReplyUI(this.props.tweet)}></i>
