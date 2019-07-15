@@ -4,7 +4,7 @@ import Tweet from './tweet.js';
 import Error from './error.js';
 import {pullHomeTimeline, pullUserTimeline, filterHomeTimeline} from '../services/service.js';
 
-const renderTimeline = (timeline, displayHandle) => {
+const renderTimeline = (timeline, displayHandle, displayReplyButton, toggleOverlayReplyUI) => {
 	const obj = timeline;
 	let tweets = [];
 	obj.forEach((tweet, i) => {
@@ -12,7 +12,7 @@ const renderTimeline = (timeline, displayHandle) => {
 		if (i == obj.length - 1)
 			className += "-last-tweet";
 
-		tweets.push(<Tweet key={i} tweet={tweet} className={className} displayHandle={displayHandle}/>);
+		tweets.push(<Tweet key={i} tweet={tweet} className={className} displayHandle={displayHandle} displayReplyButton={displayReplyButton} displayMessageLink={true} toggleOverlayReplyUI={toggleOverlayReplyUI}/>);
 	});
 
 	return(
@@ -71,16 +71,16 @@ export class HomeTimeline extends React.Component {
 	}
 
 	render() {
-		const timeline = this.state.errorMsg != null ? <Error errorMsg={this.state.errorMsg} /> : renderTimeline(this.state.timeline, true);
+		const timeline = this.state.errorMsg != null ? <Error errorMsg={this.state.errorMsg} /> : renderTimeline(this.state.timeline, true, false, this.props.toggleOverlayReplyUI);
 		return(
 			<div className="timeline">
 				<div className="homeTimeline">
 					<div className="timelineHeader">
 						<div id="pullTimeline">
-							<button className="pullTimelineButton" type="button" onClick={() => this.pullTimeline()}>Pull Home Timeline</button>
+							<button className="pullTimelineButton tweety-button" type="button" onClick={() => this.pullTimeline()}>Pull Home Timeline</button>
 						</div>
 						<div className="filterHomeTimeline">
-							<input className="filter-keyword" onChange={(e) => this.handleOnChange(e)}/><button className="filterHomeTimelineButton" onClick={() => this.filterTimeline()} disabled={this.state.filterKeyword.length == 0}>Filter</button>
+							<input className="filter-keyword" onChange={(e) => this.handleOnChange(e)}/><button className="filterHomeTimelineButton tweety-button" onClick={() => this.filterTimeline()} disabled={this.state.filterKeyword.length == 0}>Filter</button>
 						</div>
 					</div>
 					{timeline}
@@ -121,13 +121,13 @@ export class UserTimeline extends React.Component {
 	};
 
 	render() {
-		const timeline = this.state.errorMsg != null ? <Error errorMsg={this.state.errorMsg} /> : renderTimeline(this.state.timeline, false);
+		const timeline = this.state.errorMsg != null ? <Error errorMsg={this.state.errorMsg} /> : renderTimeline(this.state.timeline, false, true, this.props.toggleOverlayReplyUI);
 		return(
 			<div className="timeline">
 				<div className="userTimeline">
 					<div className="timelineHeader">
 						<div id="pullTimeline">
-							<button className="pullTimelineButton" type="button" onClick={() => this.pullTimeline()}>Pull User Timeline</button>
+							<button className="pullTimelineButton tweety-button" type="button" onClick={() => this.pullTimeline()}>Pull User Timeline</button>
 						</div>
 					</div>
 					{timeline}
